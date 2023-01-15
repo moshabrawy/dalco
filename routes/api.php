@@ -1,19 +1,13 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+/* API Routes */
 
-Route::get('123', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return 'Frot End';
 });
+
+Route::get('get_all_projects', [ProjectController::class, 'get_all_projects']);

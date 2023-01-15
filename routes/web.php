@@ -1,26 +1,36 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
-	/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-	Route::get('/', function () {
-        return view('welcome');
-    });
-    Route::get('123', function () {
-        return 'welcome';
-    });
-});
+/* Web Routes */
 
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+
+], function () {
+
+    Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('Dashboard');
+
+        Route::group(['prefix' => 'projects'], function () {
+            Route::get('add', [ProjectController::class, 'index'])->name('addProject');
+        });
+    });
+
+    Route::get('/', function () {
+        return redirect()->route('Dashboard');
+    });
+
+    // Auth Route For Admins
+    Route::group(['prefix' => '/', 'namespace' => 'Auth', 'middleware' => 'guest'], function () {
+        Route::view('login', 'auth.login')->name('login');
+        Route::POST('post-login', [UserController::class, 'login'])->name('PostLogin');
+    });
+    Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
+    
+});
