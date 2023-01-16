@@ -12,17 +12,19 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
+
 </head>
 
 <body>
     <div class="container-scroller">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo.svg') }}"
-                        alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                <a class="navbar-brand brand-logo" href="{{ route('Dashboard') }}"><img
+                        src="{{ asset('assets/images/logo.svg') }}" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{ route('Dashboard') }}"><img
                         src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -38,7 +40,7 @@
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">David Greymaax</p>
+                                <p class="mb-1 text-black">{{ auth()->user()->name }}</p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -60,7 +62,7 @@
         <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    {{-- <li class="nav-item nav-profile">
+                    <li class="nav-item nav-profile">
                         <a href="#" class="nav-link">
                             <div class="nav-profile-image">
                                 <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile">
@@ -68,49 +70,36 @@
                                 <!--change to offline or busy as needed-->
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
-                                <span class="font-weight-bold mb-2">David Grey. H</span>
-                                <span class="text-secondary text-small">Admin Manager</span>
+                                <span class="font-weight-bold mb-2">{{ auth()->user()->name }}</span>
+                                <span class="text-secondary text-small">Adminstraitor</span>
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
-                    </li> --}}
-                    {{-- <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('Dashboard') }}">
                             <span class="menu-title">Dashboard</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
-                    </li> --}}
-                      @dd(Request)
-                      @if ($request->routeIs('projects.*')) {
-                        return "eeee";
-
-                      }
-                      @endif
-
-                    {{-- @if (Request::is('/dashboard/projects'))
-                        return "eeee";
-                    @else{
-                        return 'www';
-                    }@endif --}}
-
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#projects" aria-expanded="false"
                             aria-controls="projects">
                             <span class="menu-title">Projects</span>
                             <i class="menu-arrow"></i>
                         </a>
-                        <div class="collapse @if (Request::is('projects*')) show @endif" id="projects">
+                        <div class="collapse" id="projects">
                             <ul class="nav flex-column sub-menu">
-                                {{-- <li class="nav-item">ol lll</li> --}}
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('dashboard/projects/create') }}">Add New</a></li>
-                                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('projects.index') }}">Manage</a></li> --}}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('projects.create') }}">Add New</a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('projects.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
 
-
-
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false"
                             aria-controls="news">
                             <span class="menu-title">News</span>
@@ -167,8 +156,7 @@
                             <span class="menu-title">Site Info</span>
                             <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
-                    </li> --}}
-
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->
@@ -198,6 +186,8 @@
     <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('assets/js/misc.js') }}"></script>
     <!-- endinject -->
+    {{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+    <!-- End custom js for this page -->
 </body>
 
 </html>

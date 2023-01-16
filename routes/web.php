@@ -8,21 +8,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /* Web Routes */
 
-Route::group(['prefix' => LaravelLocalization::setLocale(),
-'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
-
-    Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
-        Route::get('/', [HomeController::class, 'index'])->name('Dashboard');
-        Route::resource('projects', [ProjectController::class])->name('projects');
-
-
-            // Route::get('add', [ProjectController::class, 'create'])->name('addProject');
-            // Route::get('edit/{id}', [ProjectController::class, 'edit'])->name('editProject');
-            // Route::get('manage', [ProjectController::class, 'index'])->name('manageProjects');
-            });
-
     Route::get('/', function () {
         return redirect()->route('Dashboard');
     });
@@ -34,5 +23,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     });
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
-    
+    Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('Dashboard');
+        Route::resource('projects', ProjectController::class);
+        Route::GET('porjects/search', [ProjectController::class, 'search'])->name('projectSearch');
+
+
+    });
 });
