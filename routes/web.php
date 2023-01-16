@@ -15,11 +15,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::get('/', [HomeController::class, 'index'])->name('Dashboard');
+        Route::resource('projects', [ProjectController::class])->name('projects');
 
-        Route::group(['prefix' => 'projects'], function () {
-            Route::get('add', [ProjectController::class, 'index'])->name('addProject');
-        });
-    });
+
+            // Route::get('add', [ProjectController::class, 'create'])->name('addProject');
+            // Route::get('edit/{id}', [ProjectController::class, 'edit'])->name('editProject');
+            // Route::get('manage', [ProjectController::class, 'index'])->name('manageProjects');
+            });
 
     Route::get('/', function () {
         return redirect()->route('Dashboard');

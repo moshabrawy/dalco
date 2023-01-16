@@ -60,7 +60,7 @@
                                                     Me</label>
                                             </div>
                                         </div> --}}
-                                        <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
+                                        <button class="btn bg-gradient-primary btn-user btn-block" type="submit">Login</button>
                                        
                                     </form>
                                     <hr>
