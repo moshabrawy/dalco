@@ -74,7 +74,7 @@
 
                                         </td>
                                         <td> {{ $data->type }}</td>
-                                        <td> {{ $data->desc }}</td>
+                                        <td>  {{ Str::substr($data->desc, 0, 50)  }}</td>
                                         <td>
                                             <a href="{{ route('projects.edit', ['project' => $data->id]) }}"
                                                 class="btn btn-inverse-warning btn-sm">

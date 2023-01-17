@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Add New Project
                         </h4><br>
-                        <form method="POST" action="{{ route('projects.store') }}">
+                        <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

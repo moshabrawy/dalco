@@ -49,8 +49,9 @@
                                     <div class="form-group">
                                         <label for="type_en">Project Type EN</label>
                                         <select required name="type_en" id="type_en" class="form-control">
-                                            <option value="In Process">In Process</option>
-                                            <option value="Done">Done</option>
+                                            
+                                            <option value="In Process" {{ $project->type_en === 'In Process' ? 'selected' : ''}} >In Process</option>
+                                            <option value="Done" {{ $project->type_en  === 'Done' ? 'selected' : ''}}>Done</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -69,6 +70,7 @@
                                     <div class="form-group">
                                         <label for="type_ar">نوع المشروع</label>
                                         <select required name="type_ar" id="type_ar" class="form-control">
+                                            {{ $project->title_ar }}
                                             <option value="جارية">جارية</option>
                                             <option value="منتهية">منتهية</option>
                                         </select>

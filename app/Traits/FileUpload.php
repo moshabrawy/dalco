@@ -14,9 +14,8 @@ trait FileUpload
      */
     function UploudImage($img, $path)
     {
-        $extension = \File::extension($img);
-        $imageName = uniqid() . '.' . $extension;
-        \File::put(public_path() . '/assets/images/' . $path . '/' . $imageName, $img);
+        $imageName = uniqid() . '.' . $img->getClientOriginalExtension();
+        $img->move(public_path('assets/images/' . $path), $imageName);
         return $imageName;
     }
 }
