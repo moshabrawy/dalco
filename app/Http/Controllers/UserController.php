@@ -28,6 +28,10 @@ class UserController extends Controller
         }
     }
 
+    public function forget(){
+        return view('auth.forget');
+    }
+
     public function logout()
     {
         Auth::logout();

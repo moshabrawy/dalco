@@ -197,7 +197,6 @@
 
     <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
     <!-- endinject -->
-    <script src="{{ asset('assets/js/models.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <!-- End custom js for this page -->
 </body>

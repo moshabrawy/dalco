@@ -16,7 +16,7 @@
         </nav>
     </div>
     <div class="row">
-        
+
         <div class="col-md-3 stretch-card grid-margin">
             <div class="card bg-gradient-danger card-img-holder text-white">
                 <div class="card-body">
@@ -39,7 +39,7 @@
                         All News
                         <i class="mdi mdi-account-multiple mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">{{ $projects }} News.</h2>
+                    <h2 class="mb-5">{{ $blogs }} News.</h2>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                         All Testimonials
                         <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">{{ $projects }} Testimonial.</h2>
+                    <h2 class="mb-5">{{ $testimonials }} Testimonial.</h2>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                         All Certificates
                         <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">{{ $projects }} Certificates.</h2>
+                    <h2 class="mb-5">{{ $certificates }} Certificates.</h2>
                 </div>
             </div>
         </div>

@@ -29,6 +29,6 @@ class About extends Model
 
     public function getImageAttribute($image)
     {
-        return asset('assets/images/certificates/' . $image);
+        return asset('assets/images/about/' . $image);
     }
 }

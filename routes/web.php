@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /* Web Routes */
-
+Route::get('/404', function () {
+    return '400000004';
+});
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
@@ -26,6 +28,7 @@ Route::group([
     Route::group(['prefix' => '/', 'namespace' => 'Auth', 'middleware' => 'guest'], function () {
         Route::view('login', 'auth.login')->name('login');
         Route::POST('post-login', [UserController::class, 'login'])->name('PostLogin');
+        Route::get('forget-password', [UserController::class, 'forget'])->name('ForgetPassword');
     });
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
