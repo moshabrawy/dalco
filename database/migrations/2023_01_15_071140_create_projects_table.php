@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('title_ar');
             $table->enum('type_en', ['Done', 'In Process']);
             $table->enum('type_ar', ['منتهية', 'جارية']);
-            $table->string('description_en');
-            $table->string('description_ar');
+            $table->text('description_en');
+            $table->text('description_ar');
             $table->timestamps();
         });
     }

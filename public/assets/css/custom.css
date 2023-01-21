@@ -132,14 +132,13 @@ select.form-control {
     margin-left: 0.5rem;
 }
 
-.arabic {
-    font-family: "Segoe UI", system-ui, "Segoe UI", sans-serif;
-    font-weight: 500;
-}
-.arabic * {
+.arabic input,
+.arabic textarea{
     font-family: "Segoe UI", system-ui, sans-serif;
+    direction: rtl;
 }
-.form-control-custom{
+
+.form-control-custom {
     border: 1px solid #ebedf2;
     font-size: 0.8125rem;
     box-shadow: none;
@@ -150,5 +149,13 @@ select.form-control {
     line-height: 1;
     color: #212529;
     border-radius: 2px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.table th img,
+.table td img {
+    width: 60px;
+    height: 40px;
+    border-radius: 10px;
 }

@@ -34,9 +34,8 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <h4 class="card-title">Add New Project
-                        </h4><br>
-                        <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
+                        <h4 class="card-title">Add New Project</h4><br>
+                        <form id="create" method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -45,7 +44,7 @@
                                         <input required type="text" class="form-control" id="title_en" name="title_en">
                                     </div>
                                     <div class="form-group">
-                                        <label for="type_en">Project Type EN</label>
+                                        <label for="type_en">Project Type</label>
                                         <select required name="type_en" id="type_en" class="form-control">
                                             <option value="In Process">In Process</option>
                                             <option value="Done">Done</option>
@@ -57,33 +56,26 @@
                                         </textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-6 arabic" dir="RTL">
+                                <div class="col-md-6 arabic">
                                     <div class="form-group">
-                                        <label for="title_ar">عنوان المشروع</label>
+                                        <label for="title_ar">Title AR</label>
                                         <input required type="text" class="form-control" id="title_ar" name="title_ar">
                                     </div>
                                     <div class="form-group">
-                                        <label for="type_ar">نوع المشروع</label>
-                                        <select required name="type_ar" id="type_ar" class="form-control">
-                                            <option value="جارية">جارية</option>
-                                            <option value="منتهية">منتهية</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description_ar">وصف المشروع</label>
-                                        <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
-                                        </textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
                                         <label for="project_image">Project Image</label>
                                         <input type="file" class="form-control" id="project_image" name="image" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description_ar">Description AR</label>
+                                        <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-gradient-primary mr-2">Create</button>
+                                <button type="reset" id="reset-form" class="btn btn-gradient-light btn-icon-text">
+                                    <i class="mdi mdi-reload btn-icon-prepend"></i> Reset </button>
                             </div>
                         </form>
                     </div>

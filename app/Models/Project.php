@@ -18,4 +18,9 @@ class Project extends Model
         'description_en',
         'description_ar',
     ];
+
+    public function getImageAttribute($image)
+    {
+        return asset('assets/images/projects/' . $image);
+    }
 }

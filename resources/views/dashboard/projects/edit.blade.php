@@ -34,9 +34,10 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <h4 class="card-title">Edit Project
+                        <h4 class="card-title">Edit Project " {{ $project->title_en }} "
                         </h4><br>
-                        <form method="POST" action="{{ route('projects.update', ['project' => $project->id]) }}">
+                        <form method="POST" action="{{ route('projects.update', ['project' => $project->id]) }}"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="row">
@@ -49,49 +50,49 @@
                                     <div class="form-group">
                                         <label for="type_en">Project Type EN</label>
                                         <select required name="type_en" id="type_en" class="form-control">
-                                            
-                                            <option value="In Process" {{ $project->type_en === 'In Process' ? 'selected' : ''}} >In Process</option>
-                                            <option value="Done" {{ $project->type_en  === 'Done' ? 'selected' : ''}}>Done</option>
+                                            <option value="In Process"
+                                                {{ $project->type_en === 'In Process' ? 'selected' : '' }}>
+                                                In Process
+                                            </option>
+                                            <option value="Done" {{ $project->type_en === 'Done' ? 'selected' : '' }}>
+                                                Done
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="description_en">Description EN</label>
                                         <textarea required rows="5" class="form-control" id="description_en" name="description_en">
-                                            {{ $project->description_en }}
+                                        {{ $project->description_en }}
                                         </textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-6 arabic" dir="RTL">
+                                <div class="col-md-6 arabic">
                                     <div class="form-group">
-                                        <label for="title_ar">عنوان المشروع</label>
+                                        <label for="title_ar">Title AR</label>
                                         <input required type="text" class="form-control" id="title_ar" name="title_ar"
                                             value="{{ $project->title_ar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="type_ar">نوع المشروع</label>
-                                        <select required name="type_ar" id="type_ar" class="form-control">
-                                            {{ $project->title_ar }}
-                                            <option value="جارية">جارية</option>
-                                            <option value="منتهية">منتهية</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description_ar">وصف المشروع</label>
-                                        <textarea required rows="5" class="form-control-custom" id="description_ar" name="description_ar">
-                                            {{ $project->description_ar }}
-                                        </textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
                                         <label for="project_image">Project Image</label>
-                                        <img src="{{asset("public/assets/images/$project->image")}}" alt="Project Image">
-                                        <input type="file" class="form-control" id="project_image" name="image" />
+                                        <div style="display: flex">
+                                            <a href="{{ $project->image }}" target="_blank">
+                                                <img style="width: 45px; height: 45px" src="{{ $project->image }}"
+                                                    alt="Project Image">
+                                            </a>
+                                            <input type="file" class="form-control" id="project_image" name="image" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description_ar">Description AR</label>
+                                        <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
+                                        {{ $project->description_ar }}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">Create</button>
+                                <a href="{{ route('projects.index') }}" class="btn btn-gradient-light ml-2">Cancel</a>
                             </div>
                         </form>
                     </div>

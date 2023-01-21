@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use File;
+use App\Http\Resources\ProjectResource;
 
 use App\Models\Project;
 use App\Traits\FileUpload;
@@ -32,8 +32,7 @@ class ProjectController extends Controller
             "title_en" => "required",
             "title_ar" => "required",
             "type_en" => "required",
-            "type_ar" => "required",
-            "image" => "required",
+            "image"   => "required",
         ]);
 
         if ($validation->fails()) {
@@ -43,7 +42,7 @@ class ProjectController extends Controller
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
                 'type_en' => $request->type_en,
-                'type_ar' => $request->type_ar,
+                'type_ar' => $request->type_en == 'Done' ? 'منتهية' : 'جارية',
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
                 'image' => $this->UploudImage($request->image, 'projects'),
@@ -66,16 +65,40 @@ class ProjectController extends Controller
         return view('dashboard.projects.edit', compact('project'));
     }
 
-    public function update()
+    public function update(Project $project, Request $request)
     {
-        return view('dashboard.projects.add');
+        $validation = Validator::make($request->all(), [
+            "title_en" => "required",
+            "title_ar" => "required",
+            "type_en" => "required",
+        ]);
+        if ($validation->fails()) {
+            return redirect()->route('projects.edit', ['project' => $project->id])->with('error', $validation->errors());
+        } else {
+            $project->update([
+                'title_en' => $request->title_en,
+                'title_ar' => $request->title_ar,
+                'type_en' => $request->type_en,
+                'type_ar' => $request->type_en == 'Done' ? 'منتهية' : 'جارية',
+                'description_en' => $request->description_en,
+                'description_ar' => $request->description_ar,
+                'image' => !empty($request->image) ? $this->UploudImage($request->image, 'projects') : $project->image,
+            ]);
+        }
+        return redirect()->route('projects.index',)->with('success update', 'Done!');
     }
-
+    public function destroy(Project $project)
+    {
+        $project->delete();
+        return redirect()->route('projects.index')->with('success', 'Done!');
+    }
 
     // EndPoints
     public function get_all_projects(Request $request)
     {
-        $projects = Project::select('id', 'image', 'title_' . $request->lang . ' As title', 'type_' . $request->lang . ' As type', 'description_' . $request->lang . ' As desc')->get();
-        return response()->json(['projects' => $projects]);
+        $lang = !empty($request->lang) ? $request->lang : 'en';
+        $projects = Project::select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')->paginate(10);
+        $all_data = ProjectResource::collection($projects);
+        return response()->json(['count_pages' => $projects->lastPage(), 'projects' => $all_data]);
     }
 }

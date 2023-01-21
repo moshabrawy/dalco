@@ -14,4 +14,9 @@ class Client extends Model
         'client_name_en',
         'client_name_ar',
     ];
+
+    public function getImageAttribute($image)
+    {
+        return asset('assets/images/clients/' . $image);
+    }
 }

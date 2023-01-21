@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
     <!-- Layout styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/modals.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <!-- End layout styles -->
@@ -98,7 +99,6 @@
                             </ul>
                         </div>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false"
                             aria-controls="news">
@@ -107,8 +107,8 @@
                         </a>
                         <div class="collapse" id="news">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('blogs.create') }}">Add New</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('blogs.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
@@ -120,21 +120,21 @@
                         </a>
                         <div class="collapse" id="services">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('services.create') }}">Add New</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('services.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#teams" aria-expanded="false"
-                            aria-controls="teams">
-                            <span class="menu-title">Teams</span>
+                        <a class="nav-link" data-bs-toggle="collapse" href="#certificates" aria-expanded="false"
+                            aria-controls="certificates">
+                            <span class="menu-title">Certificates</span>
                             <i class="menu-arrow"></i>
                         </a>
-                        <div class="collapse" id="teams">
+                        <div class="collapse" id="certificates">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('certificates.create') }}">Add New</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('certificates.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
@@ -146,14 +146,27 @@
                         </a>
                         <div class="collapse" id="testimonials">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('testimonials.create') }}">Add New</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('testimonials.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span class="menu-title">Site Info</span>
+                        <a class="nav-link" data-bs-toggle="collapse" href="#clients" aria-expanded="false"
+                            aria-controls="clients">
+                            <span class="menu-title">Clients</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="clients">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('clients.create') }}">Add New</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('clients.index') }}">Manage</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('about.edit', ['about'=> 1])}}">
+                            <span class="menu-title">About US</span>
                             <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
                     </li>
@@ -181,12 +194,11 @@
     <!-- plugins:js -->
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
-    <!-- inject:js -->
-    <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
+
     <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
-    <script src="{{ asset('assets/js/misc.js') }}"></script>
     <!-- endinject -->
-    {{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/models.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
     <!-- End custom js for this page -->
 </body>
 

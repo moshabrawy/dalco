@@ -44,6 +44,8 @@
                         <div class="alert alert-info">Delete Successfull !</div>
                     @elseif (session()->has('error'))
                         <div class="alert alert-danger">Delete Fail !</div>
+                    @elseif (session()->has('success update'))
+                        <div class="alert alert-success">Update Success !</div>
                     @endif
                     @if ($datas->isEmpty())
                         <div class="no_results  text-center">
@@ -54,7 +56,7 @@
                         </div>
                     @else
                         <table class="table table-striped text-center">
-                            <thead class=" blue-edit">
+                            <thead class="blue-edit">
                                 <tr>
                                     <th> ID </th>
                                     <th> Title </th>
@@ -70,11 +72,10 @@
                                         <td> {{ $data->id }} </td>
                                         <td> {{ $data->title }}</td>
                                         <td>
-                                            <img src="{{ asset("assets/images/projects/$data->image") }}" alt="No Results">
-
+                                            <img src="{{ $data->image }}" alt="No Results">
                                         </td>
                                         <td> {{ $data->type }}</td>
-                                        <td>  {{ Str::substr($data->desc, 0, 50)  }}</td>
+                                        <td> {{ Str::substr($data->desc, 0, 50) }}</td>
                                         <td>
                                             <a href="{{ route('projects.edit', ['project' => $data->id]) }}"
                                                 class="btn btn-inverse-warning btn-sm">
@@ -85,8 +86,8 @@
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-inverse-danger btn-sm"> <i
-                                                        class="mdi mdi-delete"></i>
+                                                <button type="submit" class="btn btn-inverse-danger btn-sm">
+                                                    <i class="mdi mdi-delete"></i>
                                                 </button>
                                             </form>
                                         </td>
