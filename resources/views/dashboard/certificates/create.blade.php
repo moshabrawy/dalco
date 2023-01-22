@@ -20,19 +20,6 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    @if (session()->has('success'))
-                        <div class="card card-inverse-success" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> Greate! Added Successfully</p>
-                            </div>
-                        </div>
-                    @elseif (session()->has('error'))
-                        <div class="card card-inverse-danger" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> oops! Added Fail</p>
-                            </div>
-                        </div>
-                    @endif
                     <div class="card-body">
                         <h4 class="card-title">Add New Certificate</h4><br>
                         <form id="create" method="POST" action="{{ route('certificates.store') }}" enctype="multipart/form-data">

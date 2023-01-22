@@ -20,19 +20,6 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    @if (session()->has('appointmentUpdated'))
-                        <div class="card card-inverse-success" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> Greate! Updateed Successfully</p>
-                            </div>
-                        </div>
-                    @elseif (session()->has('error'))
-                        <div class="card card-inverse-danger" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> oops! Updateed Fail</p>
-                            </div>
-                        </div>
-                    @endif
                     <div class="card-body">
                         <h4 class="card-title">Edit Certificate " {{ $certificate->name }} "
                         </h4><br>
@@ -72,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                                 <a href="{{ route('certificates.index') }}" class="btn btn-gradient-light ml-2">Cancel</a>
                             </div>
                         </form>

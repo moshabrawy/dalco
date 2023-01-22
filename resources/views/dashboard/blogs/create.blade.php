@@ -6,7 +6,7 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-bookmark-outline"></i>
             </span>
-            Create New News
+            New News
         </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
@@ -20,19 +20,6 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    @if (session()->has('success'))
-                        <div class="card card-inverse-success" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> Greate! Created Successfully</p>
-                            </div>
-                        </div>
-                    @elseif (session()->has('error'))
-                        <div class="card card-inverse-danger" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> oops! Created Fail</p>
-                            </div>
-                        </div>
-                    @endif
                     <div class="card-body">
                         <h4 class="card-title">Add New News</h4><br>
                         <form id="create" method="POST" action="{{ route('blogs.store') }}" enctype="multipart/form-data">

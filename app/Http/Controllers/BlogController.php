@@ -34,7 +34,8 @@ class BlogController extends Controller
         ]);
 
         if ($validation->fails()) {
-            return redirect()->route('blogs.create')->with('error', $validation->errors());
+            notify()->error('Oops, Please, fill all Inputs and try again.');
+            return redirect()->route('blogs.create');
         } else {
             Blog::create([
                 'title_en' => $request->title_en,
@@ -44,7 +45,8 @@ class BlogController extends Controller
                 'image' => $this->UploudImage($request->image, 'blogs'),
             ]);
         }
-        return redirect()->route('blogs.create')->with('success', 'Done!');
+        notify()->success('You are awesome, your data was Created successfully.');
+        return redirect()->route('blogs.create');
     }
 
     public function search(Request $request)
@@ -70,12 +72,14 @@ class BlogController extends Controller
         if ($validation->fails()) {
             return redirect()->route('blog.edit', ['project' => $blog->id])->with('error', $validation->errors());
         } else {
+            if ($request->file('image')) {
+                $blog->update(['image' => $this->UploudImage($request->image, 'blogs')]);
+            }
             $blog->update([
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
-                'image' => !empty($request->image) ? $this->UploudImage($request->image, 'blogs') : $blog->image,
             ]);
         }
         return redirect()->route('blogs.index',)->with('success update', 'Done!');

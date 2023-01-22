@@ -48,6 +48,11 @@ class ProjectController extends Controller
                 'image' => $this->UploudImage($request->image, 'projects'),
             ]);
         }
+        notify()->success('Welcome to Laravel Notify ⚡️');
+
+        // smilify('success', 'You are successfully reconnected');
+
+
         return redirect()->route('projects.create')->with('success', 'Done!');
     }
 
@@ -75,6 +80,10 @@ class ProjectController extends Controller
         if ($validation->fails()) {
             return redirect()->route('projects.edit', ['project' => $project->id])->with('error', $validation->errors());
         } else {
+            if ($request->file('image')) {
+                $project->update(['image' => $this->UploudImage($request->image, 'projects')]);
+            }
+
             $project->update([
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
@@ -82,15 +91,17 @@ class ProjectController extends Controller
                 'type_ar' => $request->type_en == 'Done' ? 'منتهية' : 'جارية',
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
-                'image' => !empty($request->image) ? $this->UploudImage($request->image, 'projects') : $project->image,
+
             ]);
         }
-        return redirect()->route('projects.index',)->with('success update', 'Done!');
+        drakify('success');
+        return redirect()->route('projects.index');
     }
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('projects.index')->with('success', 'Done!');
+        drakify('success') ;
+        return redirect()->route('projects.index');
     }
 
     // EndPoints

@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Create</button>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                                 <a href="{{ route('clients.index') }}" class="btn btn-gradient-light ml-2">Cancel</a>
                             </div>
                         </form>

@@ -30,6 +30,7 @@ select.form-control {
 .view-div {
     margin: 30px;
 }
+
 .view {
     margin: 22px;
     padding: 10px 30px;
@@ -37,10 +38,12 @@ select.form-control {
     border-radius: 5px;
     color: white;
 }
+
 .a {
     color: black;
     padding: 10px 20px;
 }
+
 /* view */
 .name-center {
     display: flex;
@@ -87,6 +90,7 @@ select.form-control {
 .personal p {
     font-size: 20px;
 }
+
 .personal p i {
     color: #047edf;
 }
@@ -106,10 +110,12 @@ select.form-control {
     height: 100px;
     margin: 0 auto 5px;
 }
+
 .nav_specialty_icon i {
     font-size: 90px;
     color: #bba8bff5;
 }
+
 .specialty_name {
     font-size: 30px;
     margin: 10px 0;
@@ -118,9 +124,18 @@ select.form-control {
 .card-body {
     overflow: auto;
 }
-
+.no_results {
+    border: 3px dashed #F1F1F1;
+    border-radius: 5px;
+    padding: 30px;
+    margin: 20px auto 0;
+}
 .no_results img {
-    width: 200px;
+    width: 100px;
+    margin: 0 auto;
+}
+.no_results h3{
+    color: #212529;
 }
 
 .sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-image img {
@@ -133,7 +148,7 @@ select.form-control {
 }
 
 .arabic input,
-.arabic textarea{
+.arabic textarea {
     font-family: "Segoe UI", system-ui, sans-serif;
     direction: rtl;
 }
@@ -158,4 +173,9 @@ select.form-control {
     width: 60px;
     height: 40px;
     border-radius: 10px;
+}
+
+
+.notify.fixed.inset-0.flex.items-end.justify-center.px-4.py-6.pointer-events-none.sm\:p-6.sm\:items-start.sm\:justify-end {
+    margin-top: 4%;
 }

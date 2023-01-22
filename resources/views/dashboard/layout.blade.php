@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
+    @notifyCss
 
 </head>
 
@@ -192,6 +193,9 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <x:notify-messages />
+    @notifyJs
+    
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
 
@@ -199,6 +203,7 @@
     <!-- endinject -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <!-- End custom js for this page -->
+
 </body>
 
 </html>

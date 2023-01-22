@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller
 {
@@ -19,17 +17,12 @@ class AboutController extends Controller
 
     public function update(About $about, Request $request)
     {
-        $social_media = [];
-        $projects_info = [];
-        array_merge($social_media, $social_media['facebook'] = [$request->facebook ?? $about->social['facebook']]);
-        array_merge($social_media, $social_media['twitter']  = [$request->twitter ?? $about->social['twitter']]);
-        array_merge($social_media, $social_media['linkedin'] = [$request->linkedin ?? $about->social['linkedin']]);
-        array_merge($social_media, $social_media['youtube']  = [$request->youtube ?? $about->social['youtube']]);
+        $social_media = [$request->facebook, $request->twitter, $request->linkedin, $request->youtube];
+        $projects_info = [$request->projects, $request->designs, $request->awards];
 
-        array_merge($projects_info, $projects_info['done_projects'] = [$request->projects ?? $about->projects_info['done_projects']]);
-        array_merge($projects_info, $projects_info['done_designs']  = [$request->designs ?? $about->projects_info['done_designs']]);
-        array_merge($projects_info, $projects_info['given_awards']  = [$request->awards ?? $about->projects_info['given_awards']]);
-
+        if ($request->file('image')) {
+            $about->update(['image' => $this->UploudImage($request->image, 'about')]);
+        }
         $about->update([
             'title_en'      => !empty($request->title_en)   ? $request->title_en : $about->title_en,
             'title_ar'      => !empty($request->title_ar)   ? $request->title_ar : $about->title_ar,
@@ -42,10 +35,10 @@ class AboutController extends Controller
             'phone'         => !empty($request->phone)      ? $request->phone : $about->phone,
             'projects_info' => !empty($projects_info)       ? $projects_info : $about->projects_info,
             'social'        => !empty($social_media)        ? $social_media : $about->social_media,
-            'image'         => !empty($request->image)      ? $this->UploudImage($request->image, 'about') : $about->image,
         ]);
 
-        return redirect()->route('about.edit', ['about' => $about->id])->with('success update', 'Done!');
+        notify()->success('You are awesome, your data was Updated successfully.');
+        return redirect()->route('about.edit', ['about' => $about->id]);
     }
 
     // EndPoints

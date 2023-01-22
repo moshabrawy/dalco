@@ -66,10 +66,12 @@ class ClientController extends Controller
         if ($validation->fails()) {
             return redirect()->route('clients.edit', ['project' => $client->id])->with('error', $validation->errors());
         } else {
+            if ($request->file('image')) {
+                $client->update(['image' => $this->UploudImage($request->image, 'clients')]);
+            }
             $client->update([
                 'client_name_en' => $request->client_name_en,
                 'client_name_ar' => $request->client_name_ar,
-                'image' => !empty($request->image) ? $this->UploudImage($request->image, 'clients') : $client->image,
             ]);
         }
         return redirect()->route('clients.index',)->with('success update', 'Done!');

@@ -20,19 +20,6 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    @if (session()->has('success update'))
-                        <div class="card card-inverse-success" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> Greate! Updateed Successfully</p>
-                            </div>
-                        </div>
-                    @elseif (session()->has('error'))
-                        <div class="card card-inverse-danger" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> oops! Updateed Fail</p>
-                            </div>
-                        </div>
-                    @endif
                     <div class="card-body">
                         <h4 class="card-title">Edit About
                         </h4><br>
@@ -60,7 +47,7 @@
                                     <div class="form-group">
                                         <label for="desc_en">Description EN</label>
                                         <textarea rows="5" class="form-control" id="desc_en" name="desc_en">
-                                        {{ $about->desc_en}}
+                                        {{ $about->desc_en }}
                                         </textarea>
                                     </div>
                                 </div>
@@ -96,24 +83,24 @@
                                     <div class="form-group">
                                         <label for="facebook">Facebook URL</label>
                                         <input type="text" class="form-control" id="facebook" name="facebook"
-                                            value="{{$about->social['facebook'][0]}}">
+                                            value="{{ $about->social[0] }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="twitter">Twitter URL</label>
                                         <input type="text" class="form-control" id="twitter" name="twitter"
-                                            value="{{$about->social['twitter'][0]}}">
+                                            value="{{ $about->social[1] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="linkedin">Linkedin URL</label>
                                         <input type="text" class="form-control" id="linkedin" name="linkedin"
-                                            value="{{$about->social['linkedin'][0]}}">
+                                            value="{{ $about->social[2] }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="youtube">Youtube URL</label>
                                         <input type="text" class="form-control" id="youtube" name="youtube"
-                                            value="{{$about->social['youtube'][0]}}">
+                                            value="{{ $about->social[3] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -121,18 +108,18 @@
                                         <div style="display: flex; justify-content: space-between;">
                                             <div style="width: 30%">
                                                 <label for="projects">Done Projects</label>
-                                                <input type="text" class="form-control" id="projects"
-                                                    name="projects" value="{{$about->projects_info['done_projects'][0]}}">
+                                                <input type="text" class="form-control" id="projects" name="projects"
+                                                    value="{{ $about->projects_info[0] }}">
                                             </div>
                                             <div style="width: 30%">
                                                 <label for="designs">Done Designs</label>
-                                                <input type="text" class="form-control" id="designs"
-                                                    name="designs" value="{{$about->projects_info['done_designs'][0]}}">
+                                                <input type="text" class="form-control" id="designs" name="designs"
+                                                    value="{{ $about->projects_info[1] }}">
                                             </div>
                                             <div style="width: 30%">
                                                 <label for="awards">Given Awards</label>
-                                                <input type="text" class="form-control" id="awards"
-                                                    name="awards" value="{{$about->projects_info['given_awards'][0]}}">
+                                                <input type="text" class="form-control" id="awards" name="awards"
+                                                    value="{{ $about->projects_info[2] }}">
                                             </div>
 
                                         </div>
@@ -141,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Create</button>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
                                 <a href="{{ route('about.edit', ['about' => 1]) }}"
                                     class="btn btn-gradient-light ml-2">Cancel</a>
                             </div>

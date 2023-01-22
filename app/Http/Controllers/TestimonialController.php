@@ -75,6 +75,9 @@ class TestimonialController extends Controller
         if ($validation->fails()) {
             return redirect()->route('testimonials.edit', ['testimonial' => $testimonial->id])->with('error', $validation->errors());
         } else {
+            if ($request->file('image')) {
+                $testimonial->update(['image' => $this->UploudImage($request->image, 'testimonials')]);
+            }
             $testimonial->update([
                 'client_name_en' => $request->client_name_en,
                 'client_name_ar' => $request->client_name_ar,
@@ -82,7 +85,6 @@ class TestimonialController extends Controller
                 'client_title_ar' => $request->client_title_ar,
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
-                'image' => !empty($request->image) ? $this->UploudImage($request->image, 'testimonials') : $testimonial->image,
             ]);
         }
         return redirect()->route('testimonials.index',)->with('success update', 'Done!');

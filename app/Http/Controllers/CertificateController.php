@@ -69,11 +69,13 @@ class CertificateController extends Controller
         if ($validation->fails()) {
             return redirect()->route('certificates.edit', ['certificate' => $certificate->id])->with('error', $validation->errors());
         } else {
+            if ($request->file('image')) {
+                $certificate->update(['image' => $this->UploudImage($request->image, 'certificates')]);
+            }
             $certificate->update([
                 'name' => $request->name,
                 'code' => $request->code,
                 'code' => $request->date,
-                'image' => !empty($request->image) ? $this->UploudImage($request->image, 'certificates') : $certificate->image,
             ]);
         }
         return redirect()->route('certificates.index',)->with('success update', 'Done!');
