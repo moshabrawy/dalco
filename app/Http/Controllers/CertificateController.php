@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CertificateResource;
 use App\Models\Certificate;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
@@ -93,11 +94,11 @@ class CertificateController extends Controller
     }
 
     // EndPoints
-    public function get_all_projects(Request $request)
+    public function get_all_certificates(Request $request)
     {
-        // $lang = !empty($request->lang) ? $request->lang : 'en';
-        // $blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        // $all_data = BlogResource::collection($blogs);
-        // return response()->json(['count_pages' => $blogs->lastPage(), 'blogs' => $all_data]);
+        $lang = !empty($request->lang) ? $request->lang : 'en';
+        $certificates = Certificate::paginate(10);
+        $all_data = CertificateResource::collection($certificates);
+        return response()->json(['count_pages' => $certificates->lastPage(), 'blogs' => $all_data]);
     }
 }
