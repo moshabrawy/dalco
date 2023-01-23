@@ -70,7 +70,8 @@ class BlogController extends Controller
             "title_ar" => "required",
         ]);
         if ($validation->fails()) {
-            return redirect()->route('blog.edit', ['project' => $blog->id])->with('error', $validation->errors());
+            notify()->error('Oops, Please, fill all Inputs and try again.');
+            return redirect()->route('blogs.edit', ['project' => $blog->id]);
         } else {
             if ($request->file('image')) {
                 $blog->update(['image' => $this->UploudImage($request->image, 'blogs')]);
@@ -82,12 +83,14 @@ class BlogController extends Controller
                 'description_ar' => $request->description_ar,
             ]);
         }
-        return redirect()->route('blogs.index',)->with('success update', 'Done!');
+        notify()->success('You are awesome, your data was Updated successfully.');
+        return redirect()->route('blogs.index',);
     }
     public function destroy(Blog $blog)
     {
         $blog->delete();
-        return redirect()->route('blog.index')->with('success', 'Done!');
+        notify()->success('You are awesome, Deleted successfully.');
+        return redirect()->route('blogs.index');
     }
 
     // EndPoints

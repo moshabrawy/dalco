@@ -36,7 +36,6 @@ class AboutController extends Controller
             'projects_info' => !empty($projects_info)       ? $projects_info : $about->projects_info,
             'social'        => !empty($social_media)        ? $social_media : $about->social_media,
         ]);
-
         notify()->success('You are awesome, your data was Updated successfully.');
         return redirect()->route('about.edit', ['about' => $about->id]);
     }

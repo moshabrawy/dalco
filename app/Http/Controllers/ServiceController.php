@@ -30,6 +30,7 @@ class ServiceController extends Controller
         ]);
 
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('services.create')->with('error', $validation->errors());
         } else {
             Service::create([
@@ -40,6 +41,7 @@ class ServiceController extends Controller
                 'icon' => $request->icon,
             ]);
         }
+        notify()->success('You are awesome, your data was Created successfully.');
         return redirect()->route('services.create')->with('success', 'Done!');
     }
 
@@ -64,6 +66,7 @@ class ServiceController extends Controller
             "title_ar" => "required",
         ]);
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('services.edit', ['service' => $service->id])->with('error', $validation->errors());
         } else {
             $service->update([
@@ -74,20 +77,22 @@ class ServiceController extends Controller
                 'icon' => $request->icon,
             ]);
         }
-        return redirect()->route('services.index',)->with('success update', 'Done!');
+        notify()->success('You are awesome, your data was Updated successfully.');
+        return redirect()->route('services.index',);
     }
     public function destroy(Service $service)
     {
         $service->delete();
-        return redirect()->route('blog.index')->with('success', 'Done!');
+        notify()->success('You are awesome, Deleted successfully.');
+        return redirect()->route('blog.index');
     }
 
     // EndPoints
     public function get_all_projects(Request $request)
     {
-        $lang = !empty($request->lang) ? $request->lang : 'en';
-        $services = Service::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        $all_data = BlogResource::collection($services);
-        return response()->json(['count_pages' => $services->lastPage(), 'services' => $all_data]);
+        // $lang = !empty($request->lang) ? $request->lang : 'en';
+        // $services = Service::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
+        // $all_data = BlogResource::collection($services);
+        // return response()->json(['count_pages' => $services->lastPage(), 'services' => $all_data]);
     }
 }

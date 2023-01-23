@@ -33,6 +33,7 @@ class CertificateController extends Controller
         ]);
 
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('certificates.create')->with('error', $validation->errors());
         } else {
             Certificate::create([
@@ -42,6 +43,7 @@ class CertificateController extends Controller
                 'image' => $this->UploudImage($request->image, 'certificates'),
             ]);
         }
+        notify()->success('You are awesome, your data was Created successfully.');
         return redirect()->route('certificates.create')->with('success', 'Done!');
     }
 
@@ -67,6 +69,7 @@ class CertificateController extends Controller
             "date"   => "required",
         ]);
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('certificates.edit', ['certificate' => $certificate->id])->with('error', $validation->errors());
         } else {
             if ($request->file('image')) {
@@ -78,21 +81,23 @@ class CertificateController extends Controller
                 'code' => $request->date,
             ]);
         }
-        return redirect()->route('certificates.index',)->with('success update', 'Done!');
+        notify()->success('You are awesome, your data was Updated successfully.');
+        return redirect()->route('certificates.index',);
     }
 
     public function destroy(Certificate $certificate)
     {
         $certificate->delete();
-        return redirect()->route('certificates.index')->with('success', 'Done!');
+        notify()->success('You are awesome, Deleted successfully.');
+        return redirect()->route('certificates.index');
     }
 
     // EndPoints
     public function get_all_projects(Request $request)
     {
-        $lang = !empty($request->lang) ? $request->lang : 'en';
-        $blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        $all_data = BlogResource::collection($blogs);
-        return response()->json(['count_pages' => $blogs->lastPage(), 'blogs' => $all_data]);
+        // $lang = !empty($request->lang) ? $request->lang : 'en';
+        // $blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
+        // $all_data = BlogResource::collection($blogs);
+        // return response()->json(['count_pages' => $blogs->lastPage(), 'blogs' => $all_data]);
     }
 }

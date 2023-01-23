@@ -36,6 +36,7 @@ class ProjectController extends Controller
         ]);
 
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('projects.create')->with('error', $validation->errors());
         } else {
             Project::create([
@@ -48,12 +49,8 @@ class ProjectController extends Controller
                 'image' => $this->UploudImage($request->image, 'projects'),
             ]);
         }
-        notify()->success('Welcome to Laravel Notify ⚡️');
-
-        // smilify('success', 'You are successfully reconnected');
-
-
-        return redirect()->route('projects.create')->with('success', 'Done!');
+        notify()->success('You are awesome, your data was Created successfully.');
+        return redirect()->route('projects.create');
     }
 
     public function search(Request $request)
@@ -78,6 +75,7 @@ class ProjectController extends Controller
             "type_en" => "required",
         ]);
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('projects.edit', ['project' => $project->id])->with('error', $validation->errors());
         } else {
             if ($request->file('image')) {
@@ -94,13 +92,13 @@ class ProjectController extends Controller
 
             ]);
         }
-        drakify('success');
+        notify()->success('You are awesome, your data was Updated successfully.');
         return redirect()->route('projects.index');
     }
     public function destroy(Project $project)
     {
         $project->delete();
-        drakify('success') ;
+        notify()->success('You are awesome, Deleted successfully.');
         return redirect()->route('projects.index');
     }
 

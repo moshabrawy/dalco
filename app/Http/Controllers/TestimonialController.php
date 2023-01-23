@@ -35,6 +35,7 @@ class TestimonialController extends Controller
         ]);
 
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('testimonials.create')->with('error', $validation->errors());
         } else {
             Testimonial::create([
@@ -47,6 +48,7 @@ class TestimonialController extends Controller
                 'image' => $this->UploudImage($request->image, 'testimonials'),
             ]);
         }
+        notify()->success('You are awesome, your data was Created successfully.');
         return redirect()->route('testimonials.create')->with('success', 'Done!');
     }
 
@@ -73,6 +75,7 @@ class TestimonialController extends Controller
             "client_title_ar" => "required",
         ]);
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('testimonials.edit', ['testimonial' => $testimonial->id])->with('error', $validation->errors());
         } else {
             if ($request->file('image')) {
@@ -87,12 +90,14 @@ class TestimonialController extends Controller
                 'description_ar' => $request->description_ar,
             ]);
         }
-        return redirect()->route('testimonials.index',)->with('success update', 'Done!');
+        notify()->success('You are awesome, your data was Updated successfully.');
+        return redirect()->route('testimonials.index',);
     }
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        return redirect()->route('testimonials.index')->with('success', 'Done!');
+        notify()->success('You are awesome, Deleted successfully.');
+        return redirect()->route('testimonials.index');
     }
 
     // EndPoints

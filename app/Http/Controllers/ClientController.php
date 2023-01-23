@@ -32,6 +32,7 @@ class ClientController extends Controller
         ]);
 
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('clients.create')->with('error', $validation->errors());
         } else {
             Client::create([
@@ -40,7 +41,8 @@ class ClientController extends Controller
                 'image' => $this->UploudImage($request->image, 'clients'),
             ]);
         }
-        return redirect()->route('clients.create')->with('success', 'Done!');
+        notify()->success('You are awesome, your data was Created successfully.');
+        return redirect()->route('clients.create');
     }
 
     public function search(Request $request)
@@ -64,6 +66,7 @@ class ClientController extends Controller
             "client_name_ar" => "required",
         ]);
         if ($validation->fails()) {
+            notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('clients.edit', ['project' => $client->id])->with('error', $validation->errors());
         } else {
             if ($request->file('image')) {
@@ -74,12 +77,14 @@ class ClientController extends Controller
                 'client_name_ar' => $request->client_name_ar,
             ]);
         }
+        notify()->success('You are awesome, your data was Updated successfully.');
         return redirect()->route('clients.index',)->with('success update', 'Done!');
     }
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('clients.index')->with('success', 'Done!');
+        notify()->success('You are awesome, Deleted successfully.');
+        return redirect()->route('clients.index');
     }
 
     // EndPoints
