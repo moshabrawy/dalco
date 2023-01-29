@@ -139,6 +139,7 @@ select.form-control {
 }
 
 .sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-image img {
+    max-width: fit-content !important;
     width: 40px;
     height: 40px;
 }

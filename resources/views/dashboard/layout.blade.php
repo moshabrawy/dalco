@@ -64,7 +64,7 @@
         <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item nav-profile">
+                    {{-- <li class="nav-item nav-profile">
                         <a href="#" class="nav-link">
                             <div class="nav-profile-image">
                                 <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile">
@@ -77,7 +77,7 @@
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('Dashboard') }}">
                             <span class="menu-title">Dashboard</span>
@@ -89,6 +89,7 @@
                             aria-controls="projects">
                             <span class="menu-title">Projects</span>
                             <i class="menu-arrow"></i>
+                            <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
                         <div class="collapse" id="projects">
                             <ul class="nav flex-column sub-menu">
@@ -105,11 +106,14 @@
                             aria-controls="news">
                             <span class="menu-title">News</span>
                             <i class="menu-arrow"></i>
+                            <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
                         <div class="collapse" id="news">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('blogs.create') }}">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('blogs.index') }}">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('blogs.create') }}">Add
+                                        New</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('blogs.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
@@ -118,11 +122,14 @@
                             aria-controls="services">
                             <span class="menu-title">Services</span>
                             <i class="menu-arrow"></i>
+                            <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
                         <div class="collapse" id="services">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('services.create') }}">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('services.index') }}">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('services.create') }}">Add
+                                        New</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('services.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
@@ -131,11 +138,14 @@
                             aria-controls="certificates">
                             <span class="menu-title">Certificates</span>
                             <i class="menu-arrow"></i>
+                            <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
                         <div class="collapse" id="certificates">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('certificates.create') }}">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('certificates.index') }}">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('certificates.create') }}">Add New</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('certificates.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
@@ -144,11 +154,14 @@
                             aria-controls="testimonials">
                             <span class="menu-title">Testimonials</span>
                             <i class="menu-arrow"></i>
+                            <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
                         <div class="collapse" id="testimonials">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('testimonials.create') }}">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('testimonials.index') }}">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('testimonials.create') }}">Add New</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('testimonials.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
@@ -157,16 +170,19 @@
                             aria-controls="clients">
                             <span class="menu-title">Clients</span>
                             <i class="menu-arrow"></i>
+                            <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
                         <div class="collapse" id="clients">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('clients.create') }}">Add New</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('clients.index') }}">Manage</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('clients.create') }}">Add
+                                        New</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('clients.index') }}">Manage</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('about.edit', ['about'=> 1])}}">
+                        <a class="nav-link" href="{{ route('about.edit', ['about' => 1]) }}">
                             <span class="menu-title">About US</span>
                             <i class="mdi mdi-information-outline menu-icon"></i>
                         </a>
@@ -195,11 +211,13 @@
     <!-- plugins:js -->
     <x:notify-messages />
     @notifyJs
-    
+
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
 
-    <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/off-canvas.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/misc.js') }}"></script>
     <!-- endinject -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <!-- End custom js for this page -->
