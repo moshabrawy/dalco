@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProjectResource;
 
 use App\Models\Project;
+use App\Models\ProjectImages;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -39,7 +40,7 @@ class ProjectController extends Controller
             notify()->error('Oops, Please, fill all Inputs and try again.');
             return redirect()->route('projects.create')->with('error', $validation->errors());
         } else {
-            Project::create([
+            $project = Project::create([
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
                 'type_en' => $request->type_en,
@@ -48,6 +49,12 @@ class ProjectController extends Controller
                 'description_ar' => $request->description_ar,
                 'image' => $this->UploudImage($request->image, 'projects'),
             ]);
+            if ($request->has('image_gallery')) {
+                ProjectImages::create([
+                    'project_id' => $project->id,
+                    'images' => $this->UploudFiles($request->image_gallery, 'projects/gallery')
+                ]);
+            }
         }
         notify()->success('You are awesome, your data was Created successfully.');
         return redirect()->route('projects.create');
@@ -62,9 +69,10 @@ class ProjectController extends Controller
         return view('dashboard.projects.manage', compact('datas'));
     }
 
-    public function edit(Project $project)
+    public function edit(Project $project,)
     {
-        return view('dashboard.projects.edit', compact('project'));
+        $project_images = ProjectImages::where('project_id', $project->id)->first();
+        return view('dashboard.projects.edit', compact('project', 'project_images'));
     }
 
     public function update(Project $project, Request $request)
@@ -91,6 +99,12 @@ class ProjectController extends Controller
                 'description_ar' => $request->description_ar,
 
             ]);
+            if ($request->has('image_gallery')) {
+                $project_images = ProjectImages::where('project_id', $project->id)->get();
+                $project_images->update([
+                    'images' => $this->UploudFiles($request->image_gallery, 'projects/gallery')
+                ]);
+            }
         }
         notify()->success('You are awesome, your data was Updated successfully.');
         return redirect()->route('projects.index');

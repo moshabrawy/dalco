@@ -22,7 +22,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Add New Project</h4><br>
-                        <form id="create" method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
+                        <form id="create" method="POST" action="{{ route('projects.store') }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -56,6 +57,12 @@
                                         <label for="description_ar">Description AR</label>
                                         <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
                                         </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="project_image">Project Gallary</label>
+                                        <input type="file" multiple accept="image/jpeg, image/png, image/jpg" class="form-control" id="project_image" name="image_gallery[]" />
                                     </div>
                                 </div>
                             </div>

@@ -76,6 +76,27 @@
                                         </textarea>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="project_image">Project Gallary</label>
+                                        <input type="file" multiple accept="image/jpeg, image/png, image/jpg"
+                                            class="form-control" id="project_image" name="image_gallery[]" />
+                                        <div class="gallery">
+                                            @if ($project_images->images != [])
+                                                @foreach ($project_images->images as $img)
+                                                    <a href="{{ asset('assets/images/projects/gallery/' . $img) }}"
+                                                        target="_blank">
+                                                        <img style="width: 45px; height: 45px"
+                                                            src="{{ asset('assets/images/projects/gallery/' . $img) }}"
+                                                            alt="Gallery Item Image">
+                                                    </a>
+                                                @endforeach
+                                            @endif
+
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
