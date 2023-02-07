@@ -41,10 +41,15 @@ class AboutController extends Controller
     }
 
     // EndPoints
+    public function get_social_links()
+    {
+        $data = About::get();
+        return response()->json([ 'data' => $data]);
+    }
     public function get_all_projects(Request $request)
     {
-        $lang = !empty($request->lang) ? $request->lang : 'en';
-        $clients = About::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        return response()->json(['count_pages' => $clients->lastPage(), 'blogs' => $clients]);
+        // $lang = !empty($request->lang) ? $request->lang : 'en';
+        // $clients = About::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
+        // return response()->json(['count_pages' => $clients->lastPage(), 'blogs' => $clients]);
     }
 }

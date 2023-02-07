@@ -106,8 +106,25 @@ class ProjectController extends Controller
     public function get_all_projects(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $projects = Project::select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')->paginate(10);
+        $projects = Project::query()
+            ->when($request->sort, function ($q) use ($request) {
+                $q->where('type_en', $request->sort);
+            })
+            ->select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')
+            ->paginate(10);
         $all_data = ProjectResource::collection($projects);
         return response()->json(['count_pages' => $projects->lastPage(), 'projects' => $all_data]);
+    }
+    public function get_recent_projects(Request $request)
+    {
+        $lang = !empty($request->lang) ? $request->lang : 'en';
+        $projects = Project::query()
+            ->when($request->recent, function ($q) use ($request) {
+                $q->limit($request->recent ?? 4);
+            })
+            ->select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')
+            ->get();
+        $all_data = ProjectResource::collection($projects);
+        return response()->json(['projects' => $all_data]);
     }
 }

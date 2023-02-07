@@ -28,23 +28,27 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../../assets/images/logo.svg">
+                                <img src="{{ asset('assets/images/logo.svg') }}">
                             </div>
-                            <h4>Forget Password</h4>
-                            <form class="pt-3" action="{{ route('PostLogin') }}" method="POST">
+                            <h4>Validate</h4>
+                            <form class="pt-3" action="{{ route('validate_verification_code') }}" method="POST">
                                 @csrf()
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-user"
-                                        id="email" aria-describedby="emailHelp"
-                                        placeholder="Enter Email Address...">
+                                    <input type="number" name="verification_code" class="form-control form-control-user"
+                                        id="number" placeholder="Enter Code...."><br />
+                                    @if (session()->has('validator'))
+                                        <div class="alert alert-danger">
+                                            The selected verification code is invalid.
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <a href="{{route('login')}}" class="auth-link text-black">Try Login?</a>
+                                    <a href="{{ route('ForgetPassword') }}" class="auth-link text-black">Resend Code?</a>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
                                         class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">
-                                        SEND</button>
+                                        Verify</button>
                                 </div>
                             </form>
                         </div>

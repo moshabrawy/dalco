@@ -7,6 +7,7 @@ use App\Models\Certificate;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class CertificateController extends Controller
@@ -97,7 +98,7 @@ class CertificateController extends Controller
     public function get_all_certificates(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $certificates = Certificate::paginate(10);
+        $certificates = Certificate::select('id', 'name', 'code', DB::raw('DATE_FORMAT(date, "%D %b %Y") as date'), 'image')->paginate(10);
         $all_data = CertificateResource::collection($certificates);
         return response()->json(['count_pages' => $certificates->lastPage(), 'blogs' => $all_data]);
     }

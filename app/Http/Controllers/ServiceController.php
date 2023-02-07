@@ -88,11 +88,10 @@ class ServiceController extends Controller
     }
 
     // EndPoints
-    public function get_all_projects(Request $request)
+    public function get_all_services(Request $request)
     {
-        // $lang = !empty($request->lang) ? $request->lang : 'en';
-        // $services = Service::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        // $all_data = BlogResource::collection($services);
-        // return response()->json(['count_pages' => $services->lastPage(), 'services' => $all_data]);
+        $lang = !empty($request->lang) ? $request->lang : 'en';
+        $services = Service::select('id', 'icon', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->get();
+        return response()->json(['services' => $services]);
     }
 }

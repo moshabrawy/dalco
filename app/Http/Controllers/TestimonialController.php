@@ -101,11 +101,11 @@ class TestimonialController extends Controller
     }
 
     // EndPoints
-    public function get_all_projects(Request $request)
+    public function get_all_testimonials(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $testimonials = Testimonial::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        // $all_data = TestimonialResource::collection($Testimonials);
-        return response()->json(['count_pages' => $testimonials->lastPage(), 'testimonials' => $testimonials]);
+        $testimonials = Testimonial::select('id', 'image', 'client_name_' . $lang . ' As client_name', 'client_title_' . $lang . ' As client_title', 'description_' . $lang . ' As desc')
+            ->get();
+        return response()->json(['testimonials' => $testimonials]);
     }
 }

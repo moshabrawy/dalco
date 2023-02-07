@@ -28,33 +28,28 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../../assets/images/logo.svg">
+                                <img src="{{ asset('assets/images/logo.svg') }}">
                             </div>
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form class="pt-3" action="{{ route('PostLogin') }}" method="POST">
+                            <h4>Forget Password</h4>
+                            <form class="pt-3" action="{{ route('send_verification_code') }}" method="POST">
                                 @csrf()
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control form-control-user"
                                         id="email" aria-describedby="emailHelp"
-                                        placeholder="Enter Email Address...">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control form-control-user"
-                                        id="password" placeholder="Password">
+                                        placeholder="Enter Email Address..."><br />
+                                    @if (session()->has('validator'))
+                                        <div class="alert alert-danger">
+                                            The selected email is not exsist.
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
-                                        {{-- <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input"> Keep me signed in <i
-                                                class="input-helper"></i></label> --}}
-                                    </div>
-                                    <a href="{{route('ForgetPassword')}}" class="auth-link text-black">Forgot password?</a>
+                                    <a href="{{ route('login') }}" class="auth-link text-black">Try Login?</a>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
                                         class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">
-                                        SIGN IN</button>
+                                        SEND</button>
                                 </div>
                             </form>
                         </div>

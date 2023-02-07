@@ -88,10 +88,10 @@ class ClientController extends Controller
     }
 
     // EndPoints
-    public function get_all_projects(Request $request)
+    public function get_all_clients(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $clients = Client::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        return response()->json(['count_pages' => $clients->lastPage(), 'blogs' => $clients]);
+        $clients = Client::select('id', 'image', 'client_name_' . $lang . ' As client_name')->get();
+        return response()->json([ 'clients' => $clients]);
     }
 }
