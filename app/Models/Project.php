@@ -23,4 +23,9 @@ class Project extends Model
     {
         return asset('assets/images/projects/' . $image);
     }
+
+    public function images()
+    {
+        return $this->hasMany(ProjectImages::class);
+    }
 }
