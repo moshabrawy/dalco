@@ -82,8 +82,8 @@
                                         <input type="file" multiple accept="image/jpeg, image/png, image/jpg"
                                             class="form-control" id="project_image" name="image_gallery[]" />
                                         <div class="gallery">
-                                            @if ($project_images->images != [])
-                                                @foreach ($project_images->images as $img)
+                                            @if ($project->gallery != null)
+                                                @foreach ($project->gallery as $img)
                                                     <a href="{{ asset('assets/images/projects/gallery/' . $img) }}"
                                                         target="_blank">
                                                         <img style="width: 45px; height: 45px"

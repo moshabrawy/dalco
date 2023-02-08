@@ -17,15 +17,13 @@ class Project extends Model
         'type_ar',
         'description_en',
         'description_ar',
+        'gallery',
     ];
+
+    protected $casts = ['gallery' => 'array'];
 
     public function getImageAttribute($image)
     {
         return asset('assets/images/projects/' . $image);
-    }
-
-    public function images()
-    {
-        return $this->hasMany(ProjectImages::class);
     }
 }

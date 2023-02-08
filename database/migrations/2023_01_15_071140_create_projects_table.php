@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('type_ar', ['منتهية', 'جارية']);
             $table->text('description_en');
             $table->text('description_ar');
+            $table->json('gallery')->nullable();
             $table->timestamps();
         });
     }
