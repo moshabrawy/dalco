@@ -31,10 +31,11 @@ class ContactUsController extends Controller
             ]);
             $mailData = [
                 'title' => $request->name . '/' . $request->email,
+                'name' => $request->name,
+                'email' => $request->email,
                 'subject' => $request->subject,
                 'body' => $request->message
             ];
-            // return $mailData;
             Mail::send(new ContactUsMail($mailData));
             return response()->json(['message' => 'Email send successfully', 'status_code' => 200], 200);
         }

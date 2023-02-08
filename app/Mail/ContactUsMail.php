@@ -11,12 +11,13 @@ class ContactUsMail extends Mailable
 
     use Queueable, SerializesModels;
 
-    public $mailData;
     /**
      * Create a new message instance.
      *
      * @return void
      */
+
+    public $mailData;
     public function __construct($mailData)
     {
         $this->mailData = $mailData;

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /* Web Routes */
+Route::view('cont', 'emails.contact_us');
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
