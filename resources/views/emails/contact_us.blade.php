@@ -29,7 +29,7 @@
                                                 <a href="https://www.dalcolc.com" style="text-decoration:none"
                                                     target="_blank">
                                                     <img alt="" border="0"
-                                                        src="http://email.aumfusion.com/vespro/img/hero-img/blue/logo.png"
+                                                        src="{{ asset('assets/images/logo.svg') }}"
                                                         style="width:100%;max-width:150px;height:auto;display:block"
                                                         width="150">
                                                 </a>
@@ -53,15 +53,17 @@
                                                 </h2>
                                             </td>
                                         </tr>
+                                        @if($mailData['phone'] !== null)
                                         <tr>
                                             <td style="padding-bottom: 5px; padding-left: 20px; padding-right: 20px;"
                                                 align="center" valign="top" class="mainTitle">
                                                 <h2 class="text"
                                                     style="color:#000;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:20px;font-weight:500;font-style:normal;letter-spacing:normal;line-height:36px;text-transform:none;text-align:center;padding:0;margin:0">
-                                                    phone:
+                                                    phone: {{ $mailData['phone'] }}
                                                 </h2>
                                             </td>
                                         </tr>
+                                        @endif
                                         <tr>
                                             <td style="padding-bottom: 30px; padding-left: 20px; padding-right: 20px;"
                                                 align="center" valign="top" class="subTitle">

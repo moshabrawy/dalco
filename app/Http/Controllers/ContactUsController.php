@@ -30,9 +30,10 @@ class ContactUsController extends Controller
                 'message' => $request->message,
             ]);
             $mailData = [
-                'title' => $request->name . '/' . $request->email,
+                // 'title' => $request->name . '/' . $request->email,
                 'name' => $request->name,
                 'email' => $request->email,
+                'phone' => $request->phone,
                 'subject' => $request->subject,
                 'body' => $request->message
             ];

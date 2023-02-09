@@ -33,6 +33,7 @@ class ContactUsMail extends Mailable
         return $this->subject($this->mailData['subject'])
             ->from('info@dalcolc.com')
             ->to('mo.shabrawydev@gmail.com')
+            // ->to('mohamedadel.developer@gmail.com')
             ->view('emails.contact_us');
     }
 }
