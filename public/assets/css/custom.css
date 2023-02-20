@@ -142,7 +142,7 @@ select.form-control {
 }
 
 .sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-image img {
-    max-width: fit-content !important;
+    /* max-width: fit-content !important; */
     width: 40px;
     height: 40px;
 }
@@ -192,3 +192,6 @@ select.form-control {
 .gallery a{
     margin: 10px;
 }
+
+.purple-greaiante{background:linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1)) !important}
+.navbar .navbar-brand-wrapper .navbar-brand img{height: 35px;}

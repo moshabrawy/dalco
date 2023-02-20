@@ -33,13 +33,15 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
+                
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             @if (auth()->user()->avatar != null)
                                 <div class="nav-profile-img">
-                                    <img src="{{ asset('assets/images/avatars/' . auth()->user()->avatar) }}" alt="profile">
+                                    <img src="{{ asset('assets/images/avatars/' . auth()->user()->avatar) }}"
+                                        alt="profile">
                                     <span class="availability-status online"></span>
                                     <!--change to offline or busy as needed-->
                                 </div>
@@ -77,7 +79,8 @@
                         <a href="{{ route('AdminProfile') }}" class="nav-link">
                             @if (auth()->user()->avatar != null)
                                 <div class="nav-profile-image">
-                                    <img src="{{ asset('assets/images/avatars/' . auth()->user()->avatar) }}" alt="profile">
+                                    <img src="{{ asset('assets/images/avatars/' . auth()->user()->avatar) }}"
+                                        alt="profile">
                                     <span class="availability-status online"></span>
                                 </div>
                             @else
@@ -87,7 +90,8 @@
                                 </div>
                             @endif
                             <div class="nav-profile-text d-flex flex-column">
-                                <span class="font-weight-bold mb-2">{{ auth()->user()->name }}</span>
+                                <span
+                                    class="font-weight-bold mb-2">{{ substr(auth()->user()->name, 0, 10) . '...' }}</span>
                                 <span class="text-secondary text-small">Adminstraitor</span>
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
@@ -104,7 +108,7 @@
                             aria-controls="projects">
                             <span class="menu-title">Projects</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-information-outline menu-icon"></i>
+                            <i class="mdi mdi-radiobox-marked menu-icon"></i>
                         </a>
                         <div class="collapse" id="projects">
                             <ul class="nav flex-column sub-menu">
@@ -121,7 +125,7 @@
                             aria-controls="news">
                             <span class="menu-title">News</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-information-outline menu-icon"></i>
+                            <i class="mdi mdi-newspaper menu-icon"></i>
                         </a>
                         <div class="collapse" id="news">
                             <ul class="nav flex-column sub-menu">
@@ -137,7 +141,7 @@
                             aria-controls="services">
                             <span class="menu-title">Services</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-information-outline menu-icon"></i>
+                            <i class="mdi mdi-settings menu-icon"></i>
                         </a>
                         <div class="collapse" id="services">
                             <ul class="nav flex-column sub-menu">
@@ -153,7 +157,7 @@
                             aria-controls="certificates">
                             <span class="menu-title">Certificates</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-information-outline menu-icon"></i>
+                            <i class="mdi mdi-book-multiple-variant menu-icon"></i>
                         </a>
                         <div class="collapse" id="certificates">
                             <ul class="nav flex-column sub-menu">
@@ -169,7 +173,7 @@
                             aria-controls="testimonials">
                             <span class="menu-title">Testimonials</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-information-outline menu-icon"></i>
+                            <i class="mdi mdi-bookmark menu-icon"></i>
                         </a>
                         <div class="collapse" id="testimonials">
                             <ul class="nav flex-column sub-menu">
@@ -185,7 +189,7 @@
                             aria-controls="clients">
                             <span class="menu-title">Clients</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-information-outline menu-icon"></i>
+                            <i class="mdi mdi-account-multiple menu-icon"></i>
                         </a>
                         <div class="collapse" id="clients">
                             <ul class="nav flex-column sub-menu">
@@ -199,7 +203,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about.edit', ['about' => 1]) }}">
                             <span class="menu-title">About US</span>
-                            <i class="mdi mdi-information-outline menu-icon"></i>
+                            <i class="mdi mdi-information menu-icon"></i>
                         </a>
                     </li>
                 </ul>
