@@ -33,7 +33,14 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                
+                <button class="navbar-toggler navbar-toggler align-self-center">
+                    <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}">@lang('AR')</a>
+                </button>
+
+               
+
+
+
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
