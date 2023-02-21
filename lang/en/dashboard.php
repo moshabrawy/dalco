@@ -13,8 +13,17 @@ return [
     |
     */
 
-    'title' => 'Dalco',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'title' => 'Admin Dashboard | Dalco System',
+    'lang_title' => 'Languages',
+    'profileDropdown' => ['Profile', 'Logout'],
+    'content_titles' => ['Dashboard', 'Overview '],
+    'sidebar' => ['Dashboard', 'Projects', 'News', 'Services', 'Certificates', 'Testimonials', 'Clients', 'About US'],
+    'sub_menu' => ['Add New', 'Manage'],
+    'services' => ['All Services', 'Service'],
+    'news' => ['All News', 'News'],
+    'testimonials' => ['All Testimonials', 'Testimonial'],
+    'certificates' => ['All Certificates', 'Certificate'],
+    'done' => ['All Done Projects', 'Done Project'],
+    'pending' => ['All Pending Projects', 'Pending Project'],
+    'copyrights' => 'Copyright © Dalco 2023',
 ];

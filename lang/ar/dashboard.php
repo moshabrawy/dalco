@@ -13,8 +13,17 @@ return [
     |
     */
 
-    'title' => 'دالكو',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'title' => 'لوحة التحكم | دالكــو ',
+    'lang_title' => 'لغات',
+    'profileDropdown' => ['الملف الشخصي', 'تسجيل الخروج'],
+    'content_titles' => ['لوحة التحكم', 'ملخص'],
+    'sidebar' => ['لوحة التحكم', 'المشاريع', 'الأخبار', 'الخدمات', 'الشهادات', 'التقييمات', 'العملاء', 'معلومات عنا'],
+    'sub_menu' => ['إضافة جديد', 'تحكم'],
+    'services' => ['الخدمات', 'الخدمة'],
+    'news' => ['الأخبار', 'الأخبر'],
+    'testimonials' => ['التقييمات', 'تقييم'],
+    'certificates' => ['الشهادات', 'شهادة'],
+    'done' => ['المشاريع المنتهية', 'مشروع منتهي'],
+    'pending' => ['المشاريع الجارية', 'مشروع جاري'],
+    'copyrights' => 'جميع الحقوق محفوظة © دالكــو 2023',
 ];

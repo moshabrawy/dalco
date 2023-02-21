@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin Dashboard | Dalco System</title>
+    <title>@lang('dashboard.title')</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/modals.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    @if (app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="{{ asset('assets/css_rtl/style_rtl.css') }}">
+    @endif
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
     @notifyCss
@@ -33,13 +36,25 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                <button class="navbar-toggler navbar-toggler align-self-center">
-                    <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}">@lang('AR')</a>
-                </button>
 
-               
-
-
+                <ul class="navbar-nav navbar-nav-left">
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" id="langDropdown" href="#" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="mdi mdi-earth me-2 text-primary"></i>
+                            @lang('dashboard.lang_title')
+                        </a>
+                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="langDropdown">
+                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <a class="dropdown-item" hreflang="{{ $localeCode }}"
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    <i class="mdi mdi-google-translate me-2 text-success"></i>
+                                    {{ $properties['native'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </li>
+                </ul>
 
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
@@ -65,10 +80,10 @@
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item" href="{{ route('AdminProfile') }}">
-                                <i class="mdi mdi-account me-2 text-success"></i> Profile </a>
+                                <i class="mdi mdi-account me-2 text-success"></i> @lang('dashboard.profileDropdown.0') </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}">
-                                <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>
+                                <i class="mdi mdi-logout me-2 text-primary"></i> @lang('dashboard.profileDropdown.1') </a>
                         </div>
                     </li>
                 </ul>
@@ -106,110 +121,112 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('Dashboard') }}">
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.0')</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#projects" aria-expanded="false"
                             aria-controls="projects">
-                            <span class="menu-title">Projects</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.1')</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-radiobox-marked menu-icon"></i>
                         </a>
                         <div class="collapse" id="projects">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('projects.create') }}">Add New</a>
+                                    <a class="nav-link" href="{{ route('projects.create') }}">@lang('dashboard.sub_menu.0')</a>
                                 </li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('projects.index') }}">Manage</a></li>
+                                        href="{{ route('projects.index') }}">@lang('dashboard.sub_menu.1')</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false"
                             aria-controls="news">
-                            <span class="menu-title">News</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.2')</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-newspaper menu-icon"></i>
                         </a>
                         <div class="collapse" id="news">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('blogs.create') }}">Add
-                                        New</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('blogs.index') }}">Manage</a></li>
+                                        href="{{ route('blogs.create') }}">@lang('dashboard.sub_menu.0')</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('blogs.index') }}">@lang('dashboard.sub_menu.1')</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false"
                             aria-controls="services">
-                            <span class="menu-title">Services</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.3')</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-settings menu-icon"></i>
                         </a>
                         <div class="collapse" id="services">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('services.create') }}">Add
-                                        New</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('services.index') }}">Manage</a></li>
+                                        href="{{ route('services.create') }}">@lang('dashboard.sub_menu.0')</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('services.index') }}">@lang('dashboard.sub_menu.1')</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#certificates" aria-expanded="false"
                             aria-controls="certificates">
-                            <span class="menu-title">Certificates</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.4')</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-book-multiple-variant menu-icon"></i>
                         </a>
                         <div class="collapse" id="certificates">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('certificates.create') }}">Add New</a></li>
+                                        href="{{ route('certificates.create') }}">@lang('dashboard.sub_menu.0')</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('certificates.index') }}">Manage</a></li>
+                                        href="{{ route('certificates.index') }}">@lang('dashboard.sub_menu.1')</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#testimonials" aria-expanded="false"
                             aria-controls="testimonials">
-                            <span class="menu-title">Testimonials</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.5')</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-bookmark menu-icon"></i>
                         </a>
                         <div class="collapse" id="testimonials">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('testimonials.create') }}">Add New</a></li>
+                                        href="{{ route('testimonials.create') }}">@lang('dashboard.sub_menu.0')</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('testimonials.index') }}">Manage</a></li>
+                                        href="{{ route('testimonials.index') }}">@lang('dashboard.sub_menu.1')</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#clients" aria-expanded="false"
                             aria-controls="clients">
-                            <span class="menu-title">Clients</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.6')</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-account-multiple menu-icon"></i>
                         </a>
                         <div class="collapse" id="clients">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('clients.create') }}">Add
-                                        New</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('clients.index') }}">Manage</a></li>
+                                        href="{{ route('clients.create') }}">@lang('dashboard.sub_menu.0')</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('clients.index') }}">@lang('dashboard.sub_menu.1')</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about.edit', ['about' => 1]) }}">
-                            <span class="menu-title">About US</span>
+                            <span class="menu-title">@lang('dashboard.sidebar.7')</span>
                             <i class="mdi mdi-information menu-icon"></i>
                         </a>
                     </li>
@@ -223,8 +240,9 @@
                 <!-- content-wrapper ends -->
                 <footer class="footer">
                     <div class="container-fluid d-flex justify-content-between">
-                        <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright &copy;
-                            Dalco 2023</span>
+                        <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">
+                            @lang('dashboard.copyrights')
+                        </span>
                     </div>
                 </footer>
                 <!-- partial -->
