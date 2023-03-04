@@ -44,7 +44,7 @@
                             <i class="mdi mdi-earth me-2 text-primary"></i>
                             @lang('dashboard.lang_title')
                         </a>
-                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="langDropdown">
+                        <div class="dropdown-menu navbar-dropdown lang" aria-labelledby="langDropdown">
                             @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                 <a class="dropdown-item" hreflang="{{ $localeCode }}"
                                     href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
@@ -120,7 +120,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('Dashboard') }}">
+                        <a class="nav-link single" href="{{ route('Dashboard') }}">
                             <span class="menu-title">@lang('dashboard.sidebar.0')</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
@@ -225,7 +225,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('about.edit', ['about' => 1]) }}">
+                        <a class="nav-link single" href="{{ route('about.edit', ['about' => 1]) }}">
                             <span class="menu-title">@lang('dashboard.sidebar.7')</span>
                             <i class="mdi mdi-information menu-icon"></i>
                         </a>
@@ -259,7 +259,7 @@
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
 
-    {{-- <script src="{{ asset('assets/js/off-canvas.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script> --}}
     <script src="{{ asset('assets/js/misc.js') }}"></script>
     <!-- endinject -->

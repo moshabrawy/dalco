@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+ 
 select.form-control {
     padding: 0.94rem 1.375rem;
 }
@@ -195,3 +197,6 @@ select.form-control {
 
 .purple-greaiante{background:linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1)) !important}
 .navbar .navbar-brand-wrapper .navbar-brand img{height: 35px;}
+.lang{
+    font-family: "Cairo", sans-serif
+}
