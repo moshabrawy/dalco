@@ -16,12 +16,12 @@ class TestimonialController extends Controller
     {
         $datas = Testimonial::select('id', 'image', 'client_title_' . App::getLocale() . ' As client_title', 'client_name_' . App::getLocale() . ' As client_name', 'description_' . App::getLocale() . ' As desc')
             ->paginate(10);
-        return view('dashboard.Testimonials.manage', compact('datas'));
+        return view('dashboard.testimonials.manage', compact('datas'));
     }
 
     public function create()
     {
-        return view('dashboard.Testimonials.create');
+        return view('dashboard.testimonials.create');
     }
 
     public function store(Request $request)
@@ -58,7 +58,7 @@ class TestimonialController extends Controller
         $datas = Testimonial::where('title_' . App::getLocale(), 'like', '%' . $search . '%')
             ->select('id', 'image', 'client_title_' . App::getLocale() . ' As client_title', 'client_name_' . App::getLocale() . ' As client_name', 'description_' . App::getLocale() . ' As desc')
             ->paginate(10);
-        return view('dashboard.Testimonials.manage', compact('datas'));
+        return view('dashboard.testimonials.manage', compact('datas'));
     }
 
     public function edit(Testimonial $testimonial)

@@ -7,14 +7,7 @@
                 <i class="mdi mdi-bookmark-outline"></i>
             </span>
             @lang('testimonials.title')
-        </h3> 
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-            </ul>
-        </nav>
+        </h3>
     </div>
     @auth
         <div class="row">
