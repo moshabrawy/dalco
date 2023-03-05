@@ -98,7 +98,7 @@ class BlogController extends Controller
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
         $blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('id', 'DESC')
             ->paginate(10);
         $all_data = BlogResource::collection($blogs);
         return response()->json(['count_pages' => $blogs->lastPage(), 'news' => $all_data]);
