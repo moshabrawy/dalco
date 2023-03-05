@@ -6,15 +6,8 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-bookmark-outline"></i>
             </span>
-            News
+            @lang('news.title')
         </h3>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-            </ul>
-        </nav>
     </div>
     <div class="row">
         <!-- Table Content -->
@@ -23,7 +16,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
-                            <h4 class="card-title">All News</h4>
+                            <h4 class="card-title">@lang('news.sub_title')</h4>
                         </div>
                         <div class="col-md-4">
                             <div class="search-field d-none d-md-block">
