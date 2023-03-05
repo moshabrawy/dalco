@@ -14,7 +14,7 @@ return [
         'action' => ['Save', 'Cancel']
     ],
     'edit' => [
-        'title' => 'Edit Project',
+        'title' => 'Edit Client',
         'input_labels' => ['Client Name EN', 'Client Name AR', 'Client Image'],
         'action' => ['Save', 'Cancel']
     ]

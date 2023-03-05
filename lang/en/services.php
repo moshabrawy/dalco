@@ -4,18 +4,18 @@ return [
 
     /* Clients Language Lines */
 
-    'title' => 'Clients',
-    'sub_title' => 'All Clients',
-    'table_heading' => ['ID', 'Title', 'Image', 'Type', 'Description', 'Action'],
+    'title' => 'Services',
+    'sub_title' => 'All Services',
+    'table_heading' => ['ID', 'Title', 'Icon', 'Description', 'Action'],
     'add' => [
-        'title' => 'New Project',
+        'title' => 'New Service',
         'sub_title' => 'Add New Project',
-        'input_labels' => ['Title EN', 'Project Type EN', 'Description EN', 'Title AR', 'Project Image', 'Description AR', 'Project Gallary'],
+        'input_labels' => ['Service Icon', 'Title EN', 'Description EN', 'Title AR', 'Description AR'],
         'action' => ['Save', 'Cancel']
     ],
     'edit' => [
-        'title' => 'Edit Project',
-        'input_labels' => ['Title EN', 'Project Type EN', 'Description EN', 'Title AR', 'Project Image', 'Description AR', 'Project Gallary'],
+        'title' => 'Edit Service',
+        'input_labels' => ['Service Icon', 'Title EN', 'Description EN', 'Title AR', 'Description AR'],
         'action' => ['Save', 'Cancel']
     ]
 ];
