@@ -6,22 +6,15 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-bookmark-outline"></i>
             </span>
-            Edit About
+            @lang('about.title')
         </h3>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-            </ul>
-        </nav>
     </div>
     @auth
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit About
+                        <h4 class="card-title">@lang('about.title')
                         </h4><br>
                         <form method="POST" id="create" action="{{ route('about.update', ['about' => $about->id]) }}"
                             enctype="multipart/form-data">
@@ -30,22 +23,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="title_en">Title EN</label>
+                                        <label for="title_en">@lang('about.edit.input_labels.0')</label>
                                         <input type="text" class="form-control" id="title_en" name="title_en"
                                             value="{{ $about->title_en }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="address_en">Address EN</label>
+                                        <label for="address_en">@lang('about.edit.input_labels.1')</label>
                                         <input type="text" class="form-control" id="address_en" name="address_en"
                                             value="{{ $about->address_en }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="video">Video URL</label>
+                                        <label for="video">@lang('about.edit.input_labels.2')</label>
                                         <input type="text" class="form-control" id="video" name="video"
                                             value="{{ $about->video }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="desc_en">Description EN</label>
+                                        <label for="desc_en">@lang('about.edit.input_labels.3')</label>
                                         <textarea rows="5" class="form-control" id="desc_en" name="desc_en">
                                         {{ $about->desc_en }}
                                         </textarea>
@@ -53,17 +46,17 @@
                                 </div>
                                 <div class="col-md-6 arabic">
                                     <div class="form-group">
-                                        <label for="title_ar">Title AR</label>
+                                        <label for="title_ar">@lang('about.edit.input_labels.4')</label>
                                         <input required type="text" class="form-control" id="title_ar" name="title_ar"
                                             value="{{ $about->title_ar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="address_ar">Address AR</label>
+                                        <label for="address_ar">@lang('about.edit.input_labels.5')</label>
                                         <input required type="text" class="form-control" id="address_ar" name="address_ar"
                                             value="{{ $about->address_ar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">Site Logo</label>
+                                        <label for="image">@lang('about.edit.input_labels.6')</label>
                                         <div style="display: flex">
                                             <a href="{{ $about->image }}" target="_blank">
                                                 <img style="width: 100px; height: 45px" src="{{ $about->image }}"
@@ -73,7 +66,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="desc_ar">Description AR</label>
+                                        <label for="desc_ar">@lang('about.edit.input_labels.7')</label>
                                         <textarea required rows="5" class="form-control" id="desc_ar" name="desc_ar">
                                         {{ $about->desc_ar }}
                                         </textarea>
@@ -81,24 +74,24 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="facebook">Facebook URL</label>
+                                        <label for="facebook">@lang('about.edit.input_labels.8')</label>
                                         <input type="text" class="form-control" id="facebook" name="facebook"
                                             value="{{ $about->social[0] }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="twitter">Twitter URL</label>
+                                        <label for="twitter">@lang('about.edit.input_labels.9')</label>
                                         <input type="text" class="form-control" id="twitter" name="twitter"
                                             value="{{ $about->social[1] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="linkedin">Linkedin URL</label>
+                                        <label for="linkedin">@lang('about.edit.input_labels.10')</label>
                                         <input type="text" class="form-control" id="linkedin" name="linkedin"
                                             value="{{ $about->social[2] }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="youtube">Youtube URL</label>
+                                        <label for="youtube">@lang('about.edit.input_labels.11')</label>
                                         <input type="text" class="form-control" id="youtube" name="youtube"
                                             value="{{ $about->social[3] }}">
                                     </div>
@@ -107,30 +100,28 @@
                                     <div class="form-group">
                                         <div style="display: flex; justify-content: space-between;">
                                             <div style="width: 30%">
-                                                <label for="projects">Done Projects</label>
+                                                <label for="projects">@lang('about.edit.input_labels.12')</label>
                                                 <input type="text" class="form-control" id="projects" name="projects"
                                                     value="{{ $about->projects_info[0] }}">
                                             </div>
                                             <div style="width: 30%">
-                                                <label for="designs">Done Designs</label>
+                                                <label for="designs">@lang('about.edit.input_labels.13')</label>
                                                 <input type="text" class="form-control" id="designs" name="designs"
                                                     value="{{ $about->projects_info[1] }}">
                                             </div>
                                             <div style="width: 30%">
-                                                <label for="awards">Given Awards</label>
+                                                <label for="awards">@lang('about.edit.input_labels.14')</label>
                                                 <input type="text" class="form-control" id="awards" name="awards"
                                                     value="{{ $about->projects_info[2] }}">
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">@lang('about.edit.action.0')</button>
                                 <a href="{{ route('about.edit', ['about' => 1]) }}"
-                                    class="btn btn-gradient-light ml-2">Cancel</a>
+                                    class="btn btn-gradient-light ml-2">@lang('about.edit.action.1')</a>
                             </div>
                         </form>
                     </div>

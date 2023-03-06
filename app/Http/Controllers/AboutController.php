@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AboutUSResource;
 use App\Models\About;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ class AboutController extends Controller
         if ($request->file('image')) {
             $about->update(['image' => $this->UploudImage($request->image, 'about')]);
         }
+        // return $request->title_en;
         $about->update([
             'title_en'      => !empty($request->title_en)   ? $request->title_en : $about->title_en,
             'title_ar'      => !empty($request->title_ar)   ? $request->title_ar : $about->title_ar,
@@ -43,13 +45,15 @@ class AboutController extends Controller
     // EndPoints
     public function get_social_links()
     {
-        $data = About::get();
-        return response()->json([ 'data' => $data]);
+        $data = About::pluck('social')->first();
+        return response()->json(['status_code' => 200, 'data' => $data]);
     }
-    public function get_all_projects(Request $request)
+    public function about_us(Request $request)
     {
-        // $lang = !empty($request->lang) ? $request->lang : 'en';
-        // $clients = About::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->paginate(10);
-        // return response()->json(['count_pages' => $clients->lastPage(), 'blogs' => $clients]);
+        $lang = !empty($request->lang) ? $request->lang : 'en';
+        $about = About::select('id', 'title_' . $lang . ' As title', 'desc_' . $lang . ' As desc', 'image', 'video', 'address_' . $lang . ' As address', 'email', 'phone', 'projects_info')
+            ->get();
+        $data = AboutUSResource::collection($about);
+        return response()->json(['status_code' => 200, 'data' => $data[0]]);
     }
 }
