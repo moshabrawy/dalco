@@ -106,14 +106,11 @@ class BlogController extends Controller
     public function get_recent_news(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $blogs = Blog::query()
-        ->when($request->recent, function ($q) use ($request) {
-            $q->limit($request->recent ?? 4);
-        })
-        ->select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
+        $blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
+            ->limit(4)
             ->orderBy('created_at', 'DESC')
             ->get();
         $all_data = BlogResource::collection($blogs);
-        return response()->json(['news' => $all_data]);
+        return response()->json(['status_code' => 200, 'news' => $all_data]);
     }
 }

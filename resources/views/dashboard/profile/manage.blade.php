@@ -5,15 +5,9 @@
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-face-profile"></i>
-            </span> Profile
+            </span> 
+            @lang('profile.title')
         </h3>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-            </ul>
-        </nav>
     </div>
     @auth
         <div class="row">
@@ -54,20 +48,20 @@
             <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit Personal Information</h4><br>
+                        <h4 class="card-title">@lang('profile.sub_title')</h4><br>
                         <form method="POST" action="{{ route('UpdateAdminProfile', auth()->user()->id) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="form-group row">
-                                <label for="pat_name" class="col-sm-3 col-form-label">Name</label>
+                                <label for="pat_name" class="col-sm-3 col-form-label">@lang('profile.edit.input_labels.0')</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="name" name="name"
                                         placeholder="Full Name" value="{{ auth()->user()->name }}"><br>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="email1" class="col-sm-3 col-form-label">Email</label>
+                                <label for="email1" class="col-sm-3 col-form-label">@lang('profile.edit.input_labels.1')</label>
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" id="email1" name="email" placeholder="Email"
                                         value="{{ auth()->user()->email }}"><br>
@@ -78,14 +72,14 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="phone1" class="col-sm-3 col-form-label">Mobile</label>
+                                <label for="phone1" class="col-sm-3 col-form-label">@lang('profile.edit.input_labels.2')</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="phone1" name="phone"
                                         placeholder="Mobile number" value="{{ auth()->user()->phone }}"><br>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="password1" class="col-sm-3 col-form-label">Current Password</label>
+                                <label for="password1" class="col-sm-3 col-form-label">@lang('profile.edit.input_labels.3')</label>
                                 <div class="col-sm-9">
                                     <input type="password" class="form-control" name="current_password" id="password1"
                                         placeholder="Current Password"><br>
@@ -101,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="password2" class="col-sm-3 col-form-label">New Password</label>
+                                <label for="password2" class="col-sm-3 col-form-label">@lang('profile.edit.input_labels.4')</label>
                                 <div class="col-sm-9">
                                     <input type="password" class="form-control" name="password" id="password2"
                                         placeholder="New Password"><br>
@@ -113,8 +107,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="profile_photo_path1" class="col-sm-3 col-form-label">Profile
-                                    Photo</label>
+                                <label for="profile_photo_path1" class="col-sm-3 col-form-label">@lang('profile.edit.input_labels.5')</label>
                                 <div class="col-sm-9">
                                     <input type="file" class="form-control" id="profile_photo_path1" name="avatar"
                                         placeholder="Profile Photo"><br>
@@ -125,8 +118,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
-                                <a href="{{ route('AdminProfile') }}" class="btn btn-gradient-light ml-2">Cancel</a>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">@lang('profile.edit.action.0')</button>
+                                <a href="{{ route('AdminProfile') }}" class="btn btn-gradient-light ml-2">@lang('profile.edit.action.1')</a>
                             </div>
                         </form>
                     </div>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProjectResource;
 
 use App\Models\Project;
-use App\Models\ProjectImages;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -115,18 +114,15 @@ class ProjectController extends Controller
             ->select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')
             ->paginate(10);
         $all_data = ProjectResource::collection($projects);
-        return response()->json(['count_pages' => $projects->lastPage(), 'projects' => $all_data]);
+        return response()->json(['status_code' => 200, 'count_pages' => $projects->lastPage(), 'projects' => $all_data]);
     }
     public function get_recent_projects(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $projects = Project::query()
-            ->when($request->recent, function ($q) use ($request) {
-                $q->limit($request->recent ?? 4);
-            })
-            ->select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')
+        $projects = Project::select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')
+            ->limit(4)
             ->get();
         $all_data = ProjectResource::collection($projects);
-        return response()->json(['projects' => $all_data]);
+        return response()->json(['status_code' => 200, 'projects' => $all_data]);
     }
 }

@@ -100,6 +100,6 @@ class CertificateController extends Controller
         $lang = !empty($request->lang) ? $request->lang : 'en';
         $certificates = Certificate::select('id', 'name', 'code', DB::raw('DATE_FORMAT(date, "%D %b %Y") as date'), 'image')->paginate(10);
         $all_data = CertificateResource::collection($certificates);
-        return response()->json(['count_pages' => $certificates->lastPage(), 'blogs' => $all_data]);
+        return response()->json(['status_code' => 200, 'count_pages' => $certificates->lastPage(), 'blogs' => $all_data]);
     }
 }

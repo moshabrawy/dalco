@@ -92,6 +92,6 @@ class ClientController extends Controller
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
         $clients = Client::select('id', 'image', 'client_name_' . $lang . ' As client_name')->get();
-        return response()->json([ 'clients' => $clients]);
+        return response()->json(['status_code' => 200, 'clients' => $clients]);
     }
 }
