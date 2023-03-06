@@ -11,7 +11,7 @@ return [
         'title' => 'New Testimonial',
         'sub_title' => 'Add New Testimonial',
         'input_labels' => ['Client Image', 'Client Name EN', 'Client Title EN', 'Review EN', 'Client Name AR', 'Client Title AR', 'Review AR'],
-        'action' => ['Save', 'Cancel']
+        'action' => ['Create', 'Reset']
     ],
     'edit' => [
         'title' => 'Edit Testimonial',

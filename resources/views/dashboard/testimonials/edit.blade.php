@@ -6,15 +6,8 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-bookmark-outline"></i>
             </span>
-            Edit Testimonial
+            @lang('testimonials.edit.title')
         </h3>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-            </ul>
-        </nav>
     </div>
     @auth
         <div class="row">
@@ -34,7 +27,7 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <h4 class="card-title">Edit Testimonial " {{ $testimonial->client_name_en }} "
+                        <h4 class="card-title">@lang('testimonials.edit.title') " {{ $testimonial->client_name_en }} "
                         </h4><br>
                         <form method="POST" action="{{ route('testimonials.update', ['testimonial' => $testimonial->id]) }}"
                             enctype="multipart/form-data">
@@ -43,7 +36,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="image">Testimonial Image</label>
+                                        <label for="image">@lang('testimonials.edit.input_labels.0')</label>
                                         <div style="display: flex">
                                             <input type="file" class="form-control" id="image" name="image" />
                                             <a href="{{ $testimonial->image }}" target="_blank">
@@ -55,17 +48,17 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="client_name_en">Client Name EN</label>
-                                        <input required type="text" class="form-control" id="client_name_en" name="client_name_en"
-                                            value="{{ $testimonial->client_name_en }}">
+                                        <label for="client_name_en">@lang('testimonials.edit.input_labels.1')</label>
+                                        <input required type="text" class="form-control" id="client_name_en"
+                                            name="client_name_en" value="{{ $testimonial->client_name_en }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="title_en">Client Title EN</label>
-                                        <input required type="text" class="form-control" id="title_en" name="client_title_en"
-                                            value="{{ $testimonial->client_title_en }}">
+                                        <label for="title_en">@lang('testimonials.edit.input_labels.2')</label>
+                                        <input required type="text" class="form-control" id="title_en"
+                                            name="client_title_en" value="{{ $testimonial->client_title_en }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description_en">Description EN</label>
+                                        <label for="description_en">@lang('testimonials.edit.input_labels.3')</label>
                                         <textarea required rows="5" class="form-control" id="description_en" name="description_en">
                                         {{ $testimonial->description_en }}
                                         </textarea>
@@ -73,17 +66,17 @@
                                 </div>
                                 <div class="col-md-6 arabic">
                                     <div class="form-group">
-                                        <label for="client_name_ar">Client Name AR</label>
-                                        <input required type="text" class="form-control" id="client_name_ar" name="client_name_ar"
-                                            value="{{ $testimonial->client_name_ar }}">
+                                        <label for="client_name_ar">@lang('testimonials.edit.input_labels.4')</label>
+                                        <input required type="text" class="form-control" id="client_name_ar"
+                                            name="client_name_ar" value="{{ $testimonial->client_name_ar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="title_ar">Client Title AR</label>
-                                        <input required type="text" class="form-control" id="title_ar" name="client_title_ar"
-                                            value="{{ $testimonial->client_title_ar }}">
+                                        <label for="title_ar">@lang('testimonials.edit.input_labels.5')</label>
+                                        <input required type="text" class="form-control" id="title_ar"
+                                            name="client_title_ar" value="{{ $testimonial->client_title_ar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description_ar">Description AR</label>
+                                        <label for="description_ar">@lang('testimonials.edit.input_labels.6')</label>
                                         <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
                                         {{ $testimonial->description_ar }}
                                         </textarea>
@@ -91,8 +84,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Create</button>
-                                <a href="{{ route('testimonials.index') }}" class="btn btn-gradient-light ml-2">Cancel</a>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">@lang('testimonials.edit.action.0')</button>
+                                <a href="{{ route('testimonials.index') }}"
+                                    class="btn btn-gradient-light ml-2">@lang('testimonials.edit.action.1')</a>
                             </div>
                         </form>
                     </div>

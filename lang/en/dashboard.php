@@ -26,7 +26,7 @@ return [
     'done' => ['All Done Projects', 'Done Project'],
     'pending' => ['All Pending Projects', 'Pending Project'],
     'copyrights' => 'Copyright © Dalco 2023',
-    'search_text' => 'Type Search here...',
+    'search_text' => 'Type search here...',
     'not_found' => 'Sorry, We couldn\'t find any results'
 
 ];
