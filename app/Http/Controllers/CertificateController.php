@@ -28,10 +28,13 @@ class CertificateController extends Controller
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            "name"   => "required",
-            "code"   => "required",
-            "date"   => "required",
-            "image"  => "required",
+            "company_name_en"   => "required",
+            "company_name_ar"   => "required",
+            "title_en"          => "required",
+            "title_ar"          => "required",
+            "code"              => "required",
+            "date"              => "required",
+            "image"             => "required",
         ]);
 
         if ($validation->fails()) {
@@ -39,7 +42,10 @@ class CertificateController extends Controller
             return redirect()->route('certificates.create')->with('error', $validation->errors());
         } else {
             Certificate::create([
-                'name' => $request->name,
+                'company_name_en' => $request->company_name_en,
+                'company_name_ar' => $request->company_name_ar,
+                'title_en' => $request->title_en,
+                'title_ar' => $request->title_ar,
                 'code' => $request->code,
                 'date' => $request->date,
                 'image' => $this->UploudImage($request->image, 'certificates'),

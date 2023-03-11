@@ -8,7 +8,6 @@ use Illuminate\Queue\SerializesModels;
 
 class ContactUsMail extends Mailable
 {
-
     use Queueable, SerializesModels;
 
     /**

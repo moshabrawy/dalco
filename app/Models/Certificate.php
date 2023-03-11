@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'code', 'date', 'image'];
+    protected $fillable = ['company_name_en', 'company_name_ar', 'title_en', 'title_ar', 'code', 'date', 'image'];
 
     public function getImageAttribute($image)
     {
