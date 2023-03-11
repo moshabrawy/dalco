@@ -14,7 +14,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">@lang('certificates.edit.title') " {{ $certificate->name }} "
+                        <h4 class="card-title">@lang('certificates.edit.title') " {{ $certificate->company_name_en }} "
                         </h4><br>
                         <form method="POST" action="{{ route('certificates.update', ['certificate' => $certificate->id]) }}"
                             enctype="multipart/form-data">

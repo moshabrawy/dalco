@@ -16,7 +16,7 @@ class CertificateController extends Controller
 
     public function index()
     {
-        $datas = Certificate::paginate(10);
+        $datas = Certificate::select('id', 'title_' . App::getLocale(). ' As title', 'code', 'date', 'image')->paginate(10);
         return view('dashboard.certificates.manage', compact('datas'));
     }
 

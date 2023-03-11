@@ -20,7 +20,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="search-field d-none d-md-block">
-                                <form class="align-items-center h-100" action="{{ route('certificateSearch') }}" method="GET">
+                                <form class="align-items-center h-100" action="{{ route('certificateSearch') }}"
+                                    method="GET">
                                     <div class="input-group">
                                         <input required type="text" class="form-control bg-transparent border-0"
                                             placeholder="@lang('dashboard.search_text')" name="search">
@@ -63,7 +64,7 @@
                                 @foreach ($datas as $data)
                                     <tr>
                                         <td> {{ $data->id }} </td>
-                                        <td> {{ $data->name }} </td>
+                                        <td> {{ $data->title }} </td>
                                         <td> {{ $data->code }} </td>
                                         <td> {{ $data->date }} </td>
                                         <td>
@@ -75,7 +76,8 @@
                                                 <i class="mdi mdi-lead-pencil"></i>
                                             </a>
                                             <form class="del_form"
-                                                action="{{ route('certificates.destroy', ['certificate' => $data->id]) }}" method="POST">
+                                                action="{{ route('certificates.destroy', ['certificate' => $data->id]) }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-inverse-danger btn-sm">
