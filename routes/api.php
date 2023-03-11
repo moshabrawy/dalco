@@ -17,6 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('get_social_links', [AboutController::class, 'get_social_links']);
+Route::get('about_us', [AboutController::class, 'about_us']);
 
 
 Route::get('get_all_news', [BlogController::class, 'get_all_news']);

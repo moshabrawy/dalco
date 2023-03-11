@@ -11,7 +11,7 @@ return [
         'title' => 'New Client',
         'sub_title' => 'Add New Client',
         'input_labels' => ['Client Name EN', 'Client Name AR', 'Client Image'],
-        'action' => ['Save', 'Cancel']
+        'action' => ['Create', 'Reset']
     ],
     'edit' => [
         'title' => 'Edit Client',

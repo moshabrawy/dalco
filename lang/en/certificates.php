@@ -11,7 +11,7 @@ return [
         'title' => 'New Certificate',
         'sub_title' => 'Add New Certificate',
         'input_labels' => ['Certificate Name', 'Certificate Code', 'Certificate Date', 'Certificate Image'],
-        'action' => ['Save', 'Cancel']
+        'action' => ['Create', 'Reset']
     ],
     'edit' => [
         'title' => 'Edit Certificate',

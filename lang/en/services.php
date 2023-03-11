@@ -11,7 +11,7 @@ return [
         'title' => 'New Service',
         'sub_title' => 'Add New Project',
         'input_labels' => ['Service Icon', 'Title EN', 'Description EN', 'Title AR', 'Description AR'],
-        'action' => ['Save', 'Cancel']
+        'action' => ['Create', 'Reset']
     ],
     'edit' => [
         'title' => 'Edit Service',

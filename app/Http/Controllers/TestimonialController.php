@@ -106,6 +106,6 @@ class TestimonialController extends Controller
         $lang = !empty($request->lang) ? $request->lang : 'en';
         $testimonials = Testimonial::select('id', 'image', 'client_name_' . $lang . ' As client_name', 'client_title_' . $lang . ' As client_title', 'description_' . $lang . ' As desc')
             ->get();
-        return response()->json(['testimonials' => $testimonials]);
+        return response()->json(['status_code' => 200, 'testimonials' => $testimonials]);
     }
 }

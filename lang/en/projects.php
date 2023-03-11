@@ -11,7 +11,7 @@ return [
         'title' => 'New Project',
         'sub_title' => 'Add New Project',
         'input_labels' => ['Title EN', 'Project Type EN', 'Description EN', 'Title AR', 'Project Image', 'Description AR', 'Project Gallary'],
-        'action' => ['Save', 'Cancel']
+        'action' => ['Create', 'Reset']
     ],
     'edit' => [
         'title' => 'Edit Project',

@@ -6,15 +6,8 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-bookmark-outline"></i>
             </span>
-            Certificates
+            @lang('certificates.title')
         </h3>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-            </ul>
-        </nav>
     </div>
     <div class="row">
         <!-- Table Content -->
@@ -23,14 +16,14 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
-                            <h4 class="card-title">All Certificates</h4>
+                            <h4 class="card-title">@lang('certificates.sub_title')</h4>
                         </div>
                         <div class="col-md-4">
                             <div class="search-field d-none d-md-block">
                                 <form class="align-items-center h-100" action="{{ route('certificateSearch') }}" method="GET">
                                     <div class="input-group">
                                         <input required type="text" class="form-control bg-transparent border-0"
-                                            placeholder="Type search here..." name="search">
+                                            placeholder="@lang('dashboard.search_text')" name="search">
                                         <button type="submit" class="badge badge-gradient-success search">
                                             <i class="search_icon mdi mdi-magnify"></i>
                                         </button>
@@ -52,18 +45,18 @@
                             <div class=" py-3">
                                 <img src="{{ asset('assets/images/no-results.png') }}" alt="No Results">
                             </div>
-                            <h3 class="text-center">Sorry, We couldn't find any results</h3>
+                            <h3 class="text-center">@lang('dashboard.not_found')</h3>
                         </div>
                     @else
                         <table class="table table-striped text-center">
                             <thead class="blue-edit">
                                 <tr>
-                                    <th> ID </th>
-                                    <th> Name</th>
-                                    <th> Code</th>
-                                    <th> Date</th>
-                                    <th> Image</th>
-                                    <th> action </th>
+                                    <th> @lang('certificates.table_heading.0') </th>
+                                    <th> @lang('certificates.table_heading.1') </th>
+                                    <th> @lang('certificates.table_heading.2') </th>
+                                    <th> @lang('certificates.table_heading.3') </th>
+                                    <th> @lang('certificates.table_heading.4') </th>
+                                    <th> @lang('certificates.table_heading.5') </th>
                                 </tr>
                             </thead>
                             <tbody>

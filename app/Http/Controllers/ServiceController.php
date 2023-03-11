@@ -92,6 +92,6 @@ class ServiceController extends Controller
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
         $services = Service::select('id', 'icon', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc')->get();
-        return response()->json(['services' => $services]);
+        return response()->json(['status_code' => 200, 'services' => $services]);
     }
 }
