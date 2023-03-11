@@ -16,7 +16,7 @@ class CertificateController extends Controller
 
     public function index()
     {
-        $datas = Certificate::select('id', 'name', 'code', 'code', 'image')->paginate(10);
+        $datas = Certificate::paginate(10);
         return view('dashboard.certificates.manage', compact('datas'));
     }
 
@@ -72,7 +72,10 @@ class CertificateController extends Controller
     public function update(Request $request, Certificate $certificate)
     {
         $validation = Validator::make($request->all(), [
-            "name"   => "required",
+            "company_name_en"   => "required",
+            "company_name_ar"   => "required",
+            "title_en"          => "required",
+            "title_ar"          => "required",
             "code"   => "required",
             "date"   => "required",
         ]);
@@ -84,7 +87,10 @@ class CertificateController extends Controller
                 $certificate->update(['image' => $this->UploudImage($request->image, 'certificates')]);
             }
             $certificate->update([
-                'name' => $request->name,
+                'company_name_en' => $request->company_name_en,
+                'company_name_ar' => $request->company_name_ar,
+                'title_en' => $request->title_en,
+                'title_ar' => $request->title_ar,
                 'code' => $request->code,
                 'code' => $request->date,
             ]);
@@ -104,8 +110,8 @@ class CertificateController extends Controller
     public function get_all_certificates(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $certificates = Certificate::select('id', 'name', 'code', DB::raw('DATE_FORMAT(date, "%D %b %Y") as date'), 'image')->paginate(10);
+        $certificates = Certificate::select('id', 'company_name_' . $lang . ' As company_name', 'title_' . $lang . ' As title', 'code', DB::raw('DATE_FORMAT(date, "%D %b %Y") as date'), 'image')->get();
         $all_data = CertificateResource::collection($certificates);
-        return response()->json(['status_code' => 200, 'count_pages' => $certificates->lastPage(), 'blogs' => $all_data]);
+        return response()->json(['status_code' => 200, 'data' => $all_data]);
     }
 }

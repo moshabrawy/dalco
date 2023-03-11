@@ -15,29 +15,43 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">@lang('certificates.add.sub_title')</h4><br>
-                        <form id="create" method="POST" action="{{ route('certificates.store') }}" enctype="multipart/form-data">
+                        <form id="create" method="POST" action="{{ route('certificates.store') }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">@lang('certificates.add.input_labels.0')</label>
-                                        <input required type="text" class="form-control" id="name"
-                                            name="name">
+                                        <label for="company_name_en">@lang('certificates.add.input_labels.0')</label>
+                                        <input required type="text" class="form-control" id="company_name_en"
+                                            name="company_name_en">
                                     </div>
                                     <div class="form-group">
-                                        <label for="code">@lang('certificates.add.input_labels.1')</label>
-                                        <input required type="text" class="form-control" id="code"
-                                            name="code">
+                                        <label for="title_en">@lang('certificates.add.input_labels.1')</label>
+                                        <input required type="text" class="form-control" id="title_en" name="title_en">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="code">@lang('certificates.add.input_labels.2')</label>
+                                        <input required type="text" class="form-control" id="code" name="code">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="date">@lang('certificates.add.input_labels.2')</label>
-                                        <input required type="date" class="form-control" id="date"
-                                            name="date">
+                                        <label for="company_name_ar">@lang('certificates.add.input_labels.3')</label>
+                                        <input required type="text" class="form-control" id="company_name_ar"
+                                            name="company_name_ar">
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">@lang('certificates.add.input_labels.3')</label>
+                                        <label for="title_ar">@lang('certificates.add.input_labels.4')</label>
+                                        <input required type="text" class="form-control" id="title_ar" name="title_ar">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date">@lang('certificates.add.input_labels.5')</label>
+                                        <input required type="date" class="form-control" id="date" name="date">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="image">@lang('certificates.add.input_labels.6')</label>
                                         <input type="file" class="form-control" id="image" name="image" />
                                     </div>
                                 </div>

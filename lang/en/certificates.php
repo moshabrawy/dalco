@@ -10,12 +10,12 @@ return [
     'add' => [
         'title' => 'New Certificate',
         'sub_title' => 'Add New Certificate',
-        'input_labels' => ['Certificate Name', 'Certificate Code', 'Certificate Date', 'Certificate Image'],
+        'input_labels' => ['Company Name EN', 'Certificate Title AR', 'Certificate Code', 'Company Name AR', 'Certificate Title AR', 'Certificate Date', 'Certificate Image'],
         'action' => ['Create', 'Reset']
     ],
     'edit' => [
         'title' => 'Edit Certificate',
-        'input_labels' => ['Certificate Name', 'Certificate Code', 'Certificate Date', 'Certificate Image'],
+        'input_labels' => ['Company Name EN', 'Certificate Title AR', 'Certificate Code', 'Company Name AR', 'Certificate Title AR', 'Certificate Date', 'Certificate Image'],
         'action' => ['Save', 'Cancel']
     ]
 ];
