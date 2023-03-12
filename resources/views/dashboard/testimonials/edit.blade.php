@@ -13,19 +13,6 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    @if (session()->has('appointmentUpdated'))
-                        <div class="card card-inverse-success" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> Greate! Updateed Successfully</p>
-                            </div>
-                        </div>
-                    @elseif (session()->has('error'))
-                        <div class="card card-inverse-danger" id="context-menu-open">
-                            <div class="card-body">
-                                <p class="card-text"> oops! Updateed Fail</p>
-                            </div>
-                        </div>
-                    @endif
                     <div class="card-body">
                         <h4 class="card-title">@lang('testimonials.edit.title') " {{ $testimonial->client_name_en }} "
                         </h4><br>
@@ -59,7 +46,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description_en">@lang('testimonials.edit.input_labels.3')</label>
-                                        <textarea required rows="5" class="form-control" id="description_en" name="description_en">
+                                        <textarea required maxlength="250" rows="5" class="form-control" id="description_en" name="description_en">
                                         {{ $testimonial->description_en }}
                                         </textarea>
                                     </div>
@@ -77,7 +64,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description_ar">@lang('testimonials.edit.input_labels.6')</label>
-                                        <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
+                                        <textarea required maxlength="250" rows="5" class="form-control" id="description_ar" name="description_ar">
                                         {{ $testimonial->description_ar }}
                                         </textarea>
                                     </div>
