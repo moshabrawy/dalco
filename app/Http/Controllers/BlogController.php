@@ -103,6 +103,14 @@ class BlogController extends Controller
         $all_data = BlogResource::collection($blogs);
         return response()->json(['count_pages' => $blogs->lastPage(), 'news' => $all_data]);
     }
+    public function get_news_by_id(Request $request)
+    {
+        $lang = !empty($request->lang) ? $request->lang : 'en';
+        $blog = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
+            ->where('id', $request->id)
+            ->first();
+        return response()->json(['data' => $blog]);
+    }
     public function get_recent_news(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';

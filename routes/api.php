@@ -21,10 +21,12 @@ Route::get('about_us', [AboutController::class, 'about_us']);
 
 
 Route::get('get_all_news', [BlogController::class, 'get_all_news']);
+Route::post('get_news_by_id', [BlogController::class, 'get_news_by_id']);
 Route::get('get_recent_news', [BlogController::class, 'get_recent_news']);
 Route::get('get_all_certificates', [CertificateController::class, 'get_all_certificates']);
 Route::get('get_recent_projects', [ProjectController::class, 'get_recent_projects']);
 Route::get('get_all_projects', [ProjectController::class, 'get_all_projects']);
+Route::post('get_project_by_id', [ProjectController::class, 'get_project_by_id']);
 Route::get('get_all_services', [ServiceController::class, 'get_all_services']);
 Route::get('get_all_testimonials', [TestimonialController::class, 'get_all_testimonials']);
 Route::get('get_all_clients', [ClientController::class, 'get_all_clients']);
