@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description_en">@lang('testimonials.add.input_labels.3')</label>
-                                        <textarea required rows="5" class="form-control" id="description_en" name="description_en">
+                                        <textarea required maxlength="250" rows="5" class="form-control" id="description_en" name="description_en">
                                         </textarea>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description_ar">@lang('testimonials.add.input_labels.6')</label>
-                                        <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
+                                        <textarea required maxlength="250" rows="5" class="form-control" id="description_ar" name="description_ar">
                                         </textarea>
                                     </div>
                                 </div>

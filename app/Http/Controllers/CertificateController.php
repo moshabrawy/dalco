@@ -92,7 +92,7 @@ class CertificateController extends Controller
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
                 'code' => $request->code,
-                'code' => $request->date,
+                'date' => $request->date,
             ]);
         }
         notify()->success('You are awesome, your data was Updated successfully.');
