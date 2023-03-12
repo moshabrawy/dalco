@@ -10,12 +10,42 @@ return [
     'add' => [
         'title' => 'New Project',
         'sub_title' => 'Add New Project',
-        'input_labels' => ['Title EN', 'Project Type EN', 'Description EN', 'Title AR', 'Project Image', 'Description AR', 'Project Gallary'],
+        'input_labels' => [
+            'Title EN',
+            'Owner EN',
+            'Duration EN',
+            'Project Status EN',
+            'Project Date',
+            'Description EN',
+            'Project Image',
+            'Title AR',
+            'Owner AR',
+            'Duration AR',
+            'Project Type EN',
+            'Project Price',
+            'Description AR',
+            'Project Gallary'
+        ],
         'action' => ['Create', 'Reset']
     ],
     'edit' => [
         'title' => 'Edit Project',
-        'input_labels' => ['Title EN', 'Project Type EN', 'Description EN', 'Title AR', 'Project Image', 'Description AR', 'Project Gallary'],
+        'input_labels' => [
+            'Title EN',
+            'Owner EN',
+            'Duration EN',
+            'Project Status EN',
+            'Project Date',
+            'Description EN',
+            'Project Image',
+            'Title AR',
+            'Owner AR',
+            'Duration AR',
+            'Project Type EN',
+            'Project Price',
+            'Description AR',
+            'Project Gallary'
+        ],
         'action' => ['Save', 'Cancel']
     ]
 ];
