@@ -17,24 +17,15 @@ class AboutUSResource extends JsonResource
         return [
             'title' => $this->title,
             'desc' => $this->desc,
-            'image' => $this->image,
+            'logo' => $this->image,
             'video' => $this->video,
             'address' => $this->address,
             'email' => $this->email,
             'phone' => $this->phone,
             'projects_info' => [
-                [
-                    'key' => 'Done Projects',
-                    'value' => $this->projects_info[0],
-                ],
-                [
-                    'key' => 'Done Designs',
-                    'value' => $this->projects_info[1],
-                ],
-                [
-                    'key' => 'Given Awards',
-                    'value' => $this->projects_info[2],
-                ],
+                ['value' => $this->projects_info[0]],
+                ['value' => $this->projects_info[1]],
+                ['value' => $this->projects_info[2]],
             ],
 
         ];
