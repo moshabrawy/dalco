@@ -14,6 +14,29 @@ class AboutUSResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'title' => $this->title,
+            'desc' => $this->desc,
+            'image' => $this->image,
+            'video' => $this->video,
+            'address' => $this->address,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'projects_info' => [
+                [
+                    'key' => 'Done Projects',
+                    'value' => $this->projects_info[0],
+                ],
+                [
+                    'key' => 'Done Designs',
+                    'value' => $this->projects_info[1],
+                ],
+                [
+                    'key' => 'Given Awards',
+                    'value' => $this->projects_info[2],
+                ],
+            ],
+
+        ];
     }
 }
