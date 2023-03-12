@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('title_ar');
             $table->string('owner_en');
             $table->string('owner_ar');
-            $table->string('duration');
+            $table->string('duration_en');
+            $table->string('duration_ar');
             $table->date('date');
             $table->string('price');
             $table->enum('type_en', ['Direct', 'In Direct']);

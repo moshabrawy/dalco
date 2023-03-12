@@ -128,7 +128,19 @@ class ProjectController extends Controller
     public function get_project_by_id(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $project = Project::select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc', 'gallery')
+        $project = Project::select(
+            'id',
+            'image',
+            'title_' . $lang . ' As title',
+            'owner_' . $lang . ' As owner',
+            'duration_' . $lang . ' As duration',
+            'date',
+            'price',
+            'status_' . $lang . ' As status',
+            'type_' . $lang . ' As type',
+            'description_' . $lang . ' As desc',
+            'gallery'
+        )
             ->where('id', $request->id)->first();
         return response()->json(['data' => $project]);
     }
