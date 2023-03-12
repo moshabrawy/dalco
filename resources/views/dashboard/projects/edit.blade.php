@@ -25,26 +25,26 @@
                                     <div class="form-group">
                                         <label for="title_en">@lang('projects.add.input_labels.0')</label>
                                         <input required type="text" class="form-control" id="title_en" name="title_en"
-                                            value="">
+                                            value="{{ $project->title_en }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="owner_en">@lang('projects.add.input_labels.1')</label>
                                         <input required type="text" class="form-control" id="owner_en" name="owner_en"
-                                            value="">
+                                            value="{{ $project->owner_en }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="duration_en">@lang('projects.add.input_labels.2')</label>
                                         <input required type="text" class="form-control" id="duration_en" name="duration_en"
-                                            value="">
+                                            value="{{ $project->duration_en }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="type_en">@lang('projects.add.input_labels.3')</label>
-                                        <select required name="type_en" id="type_en" class="form-control">
+                                        <label for="status_en">@lang('projects.add.input_labels.3')</label>
+                                        <select required name="status_en" id="status_en" class="form-control">
                                             <option value="In Process"
-                                                {{ $project->type_en === 'In Process' ? 'selected' : '' }}>
+                                                {{ $project->status_en === 'In Process' ? 'selected' : '' }}>
                                                 In Process
                                             </option>
-                                            <option value="Done" {{ $project->type_en === 'Done' ? 'selected' : '' }}>
+                                            <option value="Done" {{ $project->status_en === 'Done' ? 'selected' : '' }}>
                                                 Done
                                             </option>
                                         </select>
@@ -52,11 +52,12 @@
                                     <div class="form-group">
                                         <label for="date">@lang('projects.add.input_labels.4')</label>
                                         <input required type="date" class="form-control" id="date" name="date"
-                                            value="">
+                                            value="{{ $project->date }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="description_en">@lang('projects.add.input_labels.5')</label>
                                         <textarea required rows="5" class="form-control" id="description_en" name="description_en" value="">
+                                            {{ $project->description_en }}
                                         </textarea>
                                     </div>
                                     <div class="form-group">
@@ -74,21 +75,21 @@
                                     <div class="form-group">
                                         <label for="title_ar">@lang('projects.add.input_labels.7')</label>
                                         <input required type="text" class="form-control" id="title_ar" name="title_ar"
-                                            value="">
+                                            value="{{ $project->title_ar }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="owner_ar">@lang('projects.add.input_labels.8')</label>
                                         <input required type="text" class="form-control" id="owner_ar" name="owner_ar"
-                                            value="">
+                                            value="{{ $project->owner_ar }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="duration_ar">@lang('projects.add.input_labels.9')</label>
                                         <input required type="text" class="form-control" id="duration_ar" name="duration_ar"
-                                            value="">
+                                            value="{{ $project->duration_ar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="status_en">@lang('projects.add.input_labels.10')</label>
-                                        <select required name="status_en" id="status_en" class="form-control">
+                                        <label for="type_en">@lang('projects.add.input_labels.10')</label>
+                                        <select required name="type_en" id="type_en" class="form-control">
                                             <option value="Direct" {{ $project->type_en === 'Direct' ? 'selected' : '' }}>
                                                 Direct
                                             </option>
@@ -100,11 +101,12 @@
                                     <div class="form-group">
                                         <label for="price">@lang('projects.add.input_labels.11')</label>
                                         <input required type="text" class="form-control" id="price" name="price"
-                                            value="">
+                                            value="{{ $project->price }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="description_ar">@lang('projects.add.input_labels.12')</label>
                                         <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
+                                            {{ $project->description_ar }}
                                         </textarea>
                                     </div>
                                     <div class="form-group">

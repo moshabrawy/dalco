@@ -29,21 +29,38 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            "title_en" => "required",
-            "title_ar" => "required",
-            "type_en" => "required",
-            "image"   => "required",
+            "title_en"       => "required",
+            "title_ar"       => "required",
+            "owner_en"       => "required",
+            "owner_ar"       => "required",
+            "duration_en"    => "required",
+            "duration_ar"    => "required",
+            "date"           => "required",
+            "price"          => "required",
+            "description_en" => "required",
+            "description_ar" => "required",
+            "type_en"        => "required",
+            "status_en"      => "required",
+            "image"          => "required",
         ]);
 
         if ($validation->fails()) {
-            notify()->error('Oops, Please, fill all Inputs and try again.');
-            return redirect()->route('projects.create')->with('error', $validation->errors());
+            notify()->error('Oops, Please, ' . $validation->errors()->first());
+            return redirect()->back();
         } else {
             Project::create([
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
+                'owner_en' => $request->owner_en,
+                'owner_ar' => $request->owner_ar,
+                'status_en' => $request->status_en,
+                'status_ar' => $request->status_en == 'Done' ? 'منتهية' : 'جارية',
                 'type_en' => $request->type_en,
-                'type_ar' => $request->type_en == 'Done' ? 'منتهية' : 'جارية',
+                'type_ar' => $request->type_en == 'In Direct' ? 'غير مباشر' : 'مباشر',
+                'duration_en' => $request->duration_en,
+                'duration_ar' => $request->duration_ar,
+                'date' => $request->date,
+                'price' => $request->price,
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
                 'image' => $this->UploudImage($request->image, 'projects'),
@@ -71,12 +88,21 @@ class ProjectController extends Controller
     public function update(Project $project, Request $request)
     {
         $validation = Validator::make($request->all(), [
-            "title_en" => "required",
-            "title_ar" => "required",
-            "type_en" => "required",
+            "title_en"       => "required",
+            "title_ar"       => "required",
+            "owner_en"       => "required",
+            "owner_ar"       => "required",
+            "duration_en"    => "required",
+            "duration_ar"    => "required",
+            "date"           => "required",
+            "price"          => "required",
+            "description_en" => "required",
+            "description_ar" => "required",
+            "type_en"        => "required",
+            "status_en"      => "required",
         ]);
         if ($validation->fails()) {
-            notify()->error('Oops, Please, fill all Inputs and try again.');
+            notify()->error('Oops, Please, ' . $validation->errors()->first());
             return redirect()->route('projects.edit', ['project' => $project->id])->with('error', $validation->errors());
         } else {
             if ($request->file('image')) {
@@ -86,11 +112,19 @@ class ProjectController extends Controller
             $project->update([
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
+                'owner_en' => $request->owner_en,
+                'owner_ar' => $request->owner_ar,
+                'status_en' => $request->status_en,
+                'status_ar' => $request->status_en == 'Done' ? 'منتهية' : 'جارية',
                 'type_en' => $request->type_en,
-                'type_ar' => $request->type_en == 'Done' ? 'منتهية' : 'جارية',
+                'type_ar' => $request->type_en == 'In Direct' ? 'غير مباشر' : 'مباشر',
+                'duration_en' => $request->duration_en,
+                'duration_ar' => $request->duration_ar,
+                'date' => $request->date,
+                'price' => $request->price,
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
-                'gallery' => $request->has('image_gallery') ? $this->UploudFiles($request->image_gallery, 'projects/gallery') : null
+                'gallery' => $request->has('image_gallery') ? $this->UploudFiles($request->image_gallery, 'projects/gallery') : null,
             ]);
         }
         notify()->success('You are awesome, your data was Updated successfully.');

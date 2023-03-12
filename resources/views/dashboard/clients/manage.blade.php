@@ -32,14 +32,6 @@
                             </div>
                         </div>
                     </div>
-
-                    @if (session()->has('success'))
-                        <div class="alert alert-info">Delete Successfull !</div>
-                    @elseif (session()->has('error'))
-                        <div class="alert alert-danger">Delete Fail !</div>
-                    @elseif (session()->has('success update'))
-                        <div class="alert alert-success">Update Success !</div>
-                    @endif
                     @if ($datas->isEmpty())
                         <div class="no_results  text-center">
                             <div class=" py-3">

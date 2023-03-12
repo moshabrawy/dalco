@@ -84,7 +84,7 @@ class ServiceController extends Controller
     {
         $service->delete();
         notify()->success('You are awesome, Deleted successfully.');
-        return redirect()->route('blog.index');
+        return redirect()->route('services.index');
     }
 
     // EndPoints

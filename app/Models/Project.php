@@ -11,10 +11,18 @@ class Project extends Model
 
     protected $fillable = [
         'image',
+        'date',
+        'price',
         'title_en',
         'title_ar',
+        'owner_en',
+        'owner_ar',
+        'status_en',
+        'status_ar',
         'type_en',
         'type_ar',
+        'duration_en',
+        'duration_ar',
         'description_en',
         'description_ar',
         'gallery',

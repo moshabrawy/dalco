@@ -32,8 +32,8 @@
                                         <input required type="text" class="form-control" id="duration_en" name="duration_en">
                                     </div>
                                     <div class="form-group">
-                                        <label for="type_en">@lang('projects.add.input_labels.3')</label>
-                                        <select required name="type_en" id="type_en" class="form-control">
+                                        <label for="status_en">@lang('projects.add.input_labels.3')</label>
+                                        <select required name="status_en" id="status_en" class="form-control">
                                             <option value="In Process">In Process</option>
                                             <option value="Done">Done</option>
                                         </select>
@@ -66,8 +66,8 @@
                                         <input required type="text" class="form-control" id="duration_ar" name="duration_ar">
                                     </div>
                                     <div class="form-group">
-                                        <label for="status_en">@lang('projects.add.input_labels.10')</label>
-                                        <select required name="status_en" id="status_en" class="form-control">
+                                        <label for="type_en">@lang('projects.add.input_labels.10')</label>
+                                        <select required name="type_en" id="type_en" class="form-control">
                                             <option value="Direct">Direct</option>
                                             <option value="In Direct">In Direct</option>
                                         </select>
