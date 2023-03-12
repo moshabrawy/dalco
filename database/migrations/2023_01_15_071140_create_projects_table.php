@@ -18,8 +18,15 @@ return new class extends Migration
             $table->string('image');
             $table->string('title_en');
             $table->string('title_ar');
-            $table->enum('type_en', ['Done', 'In Process']);
-            $table->enum('type_ar', ['منتهية', 'جارية']);
+            $table->string('owner_en');
+            $table->string('owner_ar');
+            $table->string('duration');
+            $table->date('date');
+            $table->string('price');
+            $table->enum('type_en', ['Direct', 'In Direct']);
+            $table->enum('type_ar', ['مباشر', 'غير مباشر']);
+            $table->enum('status_en', ['Done', 'In Process']);
+            $table->enum('status_ar', ['منتهية', 'جارية']);
             $table->text('description_en');
             $table->text('description_ar');
             $table->json('gallery')->nullable();
