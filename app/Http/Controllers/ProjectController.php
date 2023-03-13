@@ -176,15 +176,18 @@ class ProjectController extends Controller
             'gallery'
         )->where('id', $request->id)->first();
         if ($project) {
-            if ($project && $project->gallery != null) {
+            // return $project->gallery;
+            if ($project->gallery != []) {
                 $project_gallery = [];
                 foreach ($project->gallery as $img) {
                     $item = asset('assets/images/projects/gallery/' . $img);
                     array_push($project_gallery, $item);
                 }
+                unset($project->gallery);
+                return response()->json(['status_code' => 200, 'data' => $project, 'gallery' => $project_gallery]);
             }
             unset($project->gallery);
-            return response()->json(['status_code' => 200, 'data' => $project, 'gallery' => $project_gallery]);
+            return response()->json(['status_code' => 200, 'data' => $project]);
         } else {
             return response()->json(['status_code' => 400, 'error' => 'Project not found']);
         }
