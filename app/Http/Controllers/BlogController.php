@@ -103,22 +103,27 @@ class BlogController extends Controller
         $all_data = BlogResource::collection($blogs);
         return response()->json(['count_pages' => $blogs->lastPage(), 'news' => $all_data]);
     }
+
+    public function get_recent_news(Request $request)
+    {
+        $lang = !empty($request->lang) ? $request->lang : 'en';
+        $blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
+            ->limit(3)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        $all_data = BlogResource::collection($blogs);
+        return response()->json(['status_code' => 200, 'news' => $all_data]);
+    }
     public function get_news_by_id(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
         $blog = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
             ->where('id', $request->id)
             ->first();
-        return response()->json(['data' => $blog]);
-    }
-    public function get_recent_news(Request $request)
-    {
-        $lang = !empty($request->lang) ? $request->lang : 'en';
-        $blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
-            ->limit(4)
-            ->orderBy('created_at', 'DESC')
-            ->get();
-        $all_data = BlogResource::collection($blogs);
-        return response()->json(['status_code' => 200, 'news' => $all_data]);
+        if ($blog) {
+            return response()->json(['status_code' => 200, 'data' => $blog]);
+        } else {
+            return response()->json(['status_code' => 400, 'error' => 'Project not found']);
+        }
     }
 }
