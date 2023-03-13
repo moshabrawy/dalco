@@ -187,7 +187,7 @@ class ProjectController extends Controller
                 return response()->json(['status_code' => 200, 'data' => $project, 'gallery' => $project_gallery]);
             }
             unset($project->gallery);
-            return response()->json(['status_code' => 200, 'data' => $project]);
+            return response()->json(['status_code' => 200, 'data' => $project, 'gallery' => []]);
         } else {
             return response()->json(['status_code' => 400, 'error' => 'Project not found']);
         }
