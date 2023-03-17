@@ -128,9 +128,9 @@ class BlogController extends Controller
             )
             ->get();
 
-        if ($blog) {
+        if (!empty($blog)) {
             $blog_data = BlogDescResource::collection($blog);
-            return response()->json(['status_code' => 200, 'data' => $blog_data]);
+            return response()->json(['status_code' => 200, 'data' => $blog_data[0]]);
         } else {
             return response()->json(['status_code' => 400, 'error' => 'News not found']);
         }

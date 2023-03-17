@@ -23,9 +23,9 @@ class ProjectDescResource extends JsonResource
             'duration' => $this->duration,
             'status' => $this->status,
             'type' => $this->type,
-            // 'image2' => $this->gallery[0] != '' ? asset('assets/images/projects/gallery/' . $this->gallery[0]) : $this->image,
+            'image2' => !empty($this->gallery) ? asset('assets/images/projects/gallery/' . $this->gallery[0]) : $this->image,
             'desc' => $this->desc,
-            $this->mergeWhen($this->gallery != [], function () {
+            $this->mergeWhen(!empty($this->gallery), function () {
                 $project_gallery = [];
                 foreach ($this->gallery as $img) {
                     $item = asset('assets/images/projects/gallery/' . $img);
