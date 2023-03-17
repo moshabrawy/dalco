@@ -17,6 +17,7 @@
     @if (app()->getLocale() == 'ar')
         <link rel="stylesheet" href="{{ asset('assets/css_rtl/style_rtl.css') }}">
     @endif
+    <script src="https://cdn.tiny.cloud/1/16qauf11xnt87szx8k22u1a5zlap8hbfowrjnky67m6ds64r/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
     @notifyCss
