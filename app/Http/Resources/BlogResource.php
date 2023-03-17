@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class BlogResource extends JsonResource
 {
@@ -19,8 +20,8 @@ class BlogResource extends JsonResource
             'id' => $this->id,
             'image' => $this->image,
             'title' => $this->title,
-            'desc' => $this->desc,
-            'date' => Carbon::parse($this->created_at)->format('Y-m-d'),
+            'desc' => Str::limit($this->desc, 250),
+            'date' => Carbon::parse($this->created_at)->format('d.m.Y'),
         ];
     }
 }

@@ -20,7 +20,7 @@ class ProjectResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'status' => $this->status,
-            'desc' => Str::limit($this->desc, 100),
+            'desc' => Str::limit($this->desc, 250),
             'image' => $this->image
         ];
     }

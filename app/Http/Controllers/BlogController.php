@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BlogDescResource;
 use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
     use FileUpload;
-
     public function index()
     {
         $datas = Blog::select('id', 'image', 'title_' . App::getLocale() . ' As title', 'description_' . App::getLocale() . ' As desc', 'created_at')
@@ -117,13 +118,21 @@ class BlogController extends Controller
     public function get_news_by_id(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $blog = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
-            ->where('id', $request->id)
-            ->first();
+        $blog = Blog::where('id', $request->id)
+            ->select(
+                'id',
+                'image',
+                'title_' . $lang . ' As title',
+                'description_' . $lang . ' As desc',
+                DB::raw('DATE_FORMAT(created_at, "%d.%m.%Y") as date'),
+            )
+            ->get();
+
         if ($blog) {
-            return response()->json(['status_code' => 200, 'data' => $blog]);
+            $blog_data = BlogDescResource::collection($blog);
+            return response()->json(['status_code' => 200, 'data' => $blog_data]);
         } else {
-            return response()->json(['status_code' => 400, 'error' => 'Project not found']);
+            return response()->json(['status_code' => 400, 'error' => 'News not found']);
         }
     }
 }
