@@ -128,7 +128,7 @@ class BlogController extends Controller
             )
             ->get();
 
-        if (!empty($blog)) {
+        if (count($blog) > 0) {
             $blog_data = BlogDescResource::collection($blog);
             return response()->json(['status_code' => 200, 'data' => $blog_data[0]]);
         } else {

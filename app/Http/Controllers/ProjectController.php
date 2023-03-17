@@ -176,7 +176,7 @@ class ProjectController extends Controller
                 'description_' . $lang . ' As desc',
                 'gallery'
             )->get();
-        if (!empty($project)) {
+        if (count($project) > 0) {
             $data = ProjectDescResource::collection($project);
             return response()->json(['status_code' => 200, 'data' => $data[0]]);
         } else {
