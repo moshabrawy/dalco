@@ -2,11 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Support\Str;
-
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProjectResource extends JsonResource
+class BlogDescResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +14,6 @@ class ProjectResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'status' => $this->status,
-            'desc' => Str::limit($this->desc, 100),
-            'image' => $this->image
-        ];
+        return parent::toArray($request);
     }
 }

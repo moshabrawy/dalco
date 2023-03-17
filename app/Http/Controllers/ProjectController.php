@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ProjectResource;
-
 use App\Models\Project;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use App\Http\Resources\ProjectResource;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\ProjectDescResource;
 
 class ProjectController extends Controller
 {
     use FileUpload;
-
     public function index()
     {
         $datas = Project::select('id', 'image', 'title_' . App::getLocale() . ' As title', 'type_' . App::getLocale() . ' As type', 'description_' . App::getLocale() . ' As desc', 'created_at')
@@ -141,11 +141,12 @@ class ProjectController extends Controller
     public function get_all_projects(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
+        $sort_by = $request->sort;
         $projects = Project::query()
-            ->when($request->sort, function ($q) use ($request) {
-                $q->where('type_en', $request->sort);
+            ->when($sort_by && $sort_by != 'all', function ($q) use ($sort_by) {
+                $q->where('status_en', $sort_by);
             })
-            ->select('id', 'image', 'title_' . $lang . ' As title', 'type_' . $lang . ' As type', 'description_' . $lang . ' As desc')
+            ->select('id', 'image', 'title_' . $lang . ' As title', 'status_' . $lang . ' As status', 'description_' . $lang . ' As desc')
             ->paginate(10);
         $all_data = ProjectResource::collection($projects);
         return response()->json(['status_code' => 200, 'count_pages' => $projects->lastPage(), 'projects' => $all_data]);
@@ -162,32 +163,22 @@ class ProjectController extends Controller
     public function get_project_by_id(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $project = Project::select(
-            'id',
-            'image',
-            'title_' . $lang . ' As title',
-            'owner_' . $lang . ' As owner',
-            'duration_' . $lang . ' As duration',
-            'date',
-            'price',
-            'status_' . $lang . ' As status',
-            'type_' . $lang . ' As type',
-            'description_' . $lang . ' As desc',
-            'gallery'
-        )->where('id', $request->id)->first();
+        $project = Project::where('id', $request->id)
+            ->select(
+                'id',
+                'image',
+                'title_' . $lang . ' As title',
+                DB::raw('DATE_FORMAT(date, "%d.%m.%Y") as date'),
+                'owner_' . $lang . ' As owner',
+                'duration_' . $lang . ' As duration',
+                'status_' . $lang . ' As status',
+                'type_' . $lang . ' As type',
+                'description_' . $lang . ' As desc',
+                'gallery'
+            )->get();
         if ($project) {
-            // return $project->gallery;
-            if ($project->gallery != []) {
-                $project_gallery = [];
-                foreach ($project->gallery as $img) {
-                    $item = asset('assets/images/projects/gallery/' . $img);
-                    array_push($project_gallery, $item);
-                }
-                unset($project->gallery);
-                return response()->json(['status_code' => 200, 'data' => $project, 'gallery' => $project_gallery]);
-            }
-            unset($project->gallery);
-            return response()->json(['status_code' => 200, 'data' => $project, 'gallery' => []]);
+            $data = ProjectDescResource::collection($project);
+            return response()->json(['status_code' => 200, 'data' => $data[0]]);
         } else {
             return response()->json(['status_code' => 400, 'error' => 'Project not found']);
         }
