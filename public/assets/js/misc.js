@@ -36,7 +36,6 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
 
         //for other url
         if (element.attr('href').indexOf(current + '/' + tag) !== -1 || (element.attr('href').indexOf(manageCurrent) !== -1 && tag == 'edit')) {
-          console.log(element);
           element.parents('.nav-item').last().addClass('active');
           if (element.parents('.sub-menu').length) {
             element.closest('.collapse').addClass('show');
@@ -58,7 +57,7 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
     // console.log('current with Tag: ' , current + '/' + tag)
     // console.log('manageCurrent: ' + manageCurrent)
     // console.log("🚀 manageCurrent", manageCurrent)
-    
+
     $('.nav li a', sidebar).each(function () {
       var $this = $(this);
       addActiveClass($this);

@@ -41,7 +41,7 @@
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <p class="p2">AffSquare</p>
+                                                            <p class="p2">Dalco System</p>
                                                             <p class="p2" id="user">To : {{ $data->name }}
                                                             </p>
                                                         </td>
@@ -70,7 +70,7 @@
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <p class="p3">AffSquare Network</p>
+                                                                <p class="p3">Dalco System</p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -102,7 +102,7 @@
                                                         <tr>
                                                             <td>
                                                                 <p class="p5">You have requested to reset the
-                                                                    password of your AFFSQHARE account.</p>
+                                                                    password of your Dalco account.</p>
                                                                 <p class="para-5">Your verification code is : <span
                                                                         id="otpNum">{{ $data->verification_code }}</span>
                                                                 </p>
@@ -140,7 +140,7 @@
                                                                     <img src="{{ asset('email_design/img/Group 3359.svg') }}"
                                                                         alt="">
                                                                 </a>
-                                                                <p class="p7">AffSquare Network</p>
+                                                                <p class="p7">Dalco System</p>
                                                             </td>
                                                             <td class="line1">
                                                                 <img src="{{ asset('email_design/img/Line 69.svg') }}"
@@ -173,7 +173,7 @@
                                                                     <img src="{{ asset('email_design/img/Got Questions_.svg') }}"
                                                                         alt="">
                                                                 </a>
-                                                                <p class="p9">+201101166111</p>
+                                                                <p class="p9">+01014018375</p>
                                                             </td>
                                                         </tr>
                                                     </table>
