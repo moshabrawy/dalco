@@ -178,7 +178,7 @@ class ProjectController extends Controller
             )->get();
         if ($project) {
             $data = ProjectDescResource::collection($project);
-            return response()->json(['status_code' => 200, 'data' => $data[0]]);
+            return response()->json(['status_code' => 200, 'data' => $data]);
         } else {
             return response()->json(['status_code' => 400, 'error' => 'Project not found']);
         }
