@@ -8,7 +8,6 @@ use App\Models\Blog;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
@@ -115,22 +114,17 @@ class BlogController extends Controller
         $all_data = BlogResource::collection($blogs);
         return response()->json(['status_code' => 200, 'news' => $all_data]);
     }
+
     public function get_news_by_id(Request $request)
     {
         $lang = !empty($request->lang) ? $request->lang : 'en';
-        $blog = Blog::where('id', $request->id)
-            ->select(
-                'id',
-                'image',
-                'title_' . $lang . ' As title',
-                'description_' . $lang . ' As desc',
-                DB::raw('DATE_FORMAT(created_at, "%d.%m.%Y") as date'),
-            )
-            ->get();
-
+        $blog = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc', 'created_at')->where('id', $request->id)->get();
+        $related_blogs = Blog::select('id', 'image', 'title_' . $lang . ' As title', 'description_' . $lang . ' As desc',  'created_at')
+            ->inRandomOrder()->where('id', '!=', $blog[0]->id)->limit(2)->get();
         if (count($blog) > 0) {
             $blog_data = BlogDescResource::collection($blog);
-            return response()->json(['status_code' => 200, 'data' => $blog_data[0]]);
+            $related_blogs_data = BlogResource::collection($related_blogs);
+            return response()->json(['status_code' => 200, 'data' => $blog_data[0], 'related' => $related_blogs_data]);
         } else {
             return response()->json(['status_code' => 400, 'error' => 'News not found']);
         }
