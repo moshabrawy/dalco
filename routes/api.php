@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
@@ -31,4 +32,5 @@ Route::get('get_all_services', [ServiceController::class, 'get_all_services']);
 Route::get('get_all_testimonials', [TestimonialController::class, 'get_all_testimonials']);
 Route::get('get_all_clients', [ClientController::class, 'get_all_clients']);
 Route::post('contact_us', [ContactUsController::class, 'contact_us_mail']);
+Route::get('footer_data', [HomeController::class, 'footer_data']);
 
