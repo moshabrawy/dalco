@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class ProjectDescResource extends JsonResource
 {
@@ -21,8 +22,10 @@ class ProjectDescResource extends JsonResource
             'date' => $this->date,
             'owner' => $this->owner,
             'duration' => $this->duration,
+            'price' => $this->price,
             'status' => $this->status,
             'type' => $this->type,
+            'short_desc' => Str::limit($this->desc, 200),
             'image2' => !empty($this->gallery) ? asset('assets/images/projects/gallery/' . $this->gallery[0]) : $this->image,
             'desc' => $this->desc,
             $this->mergeWhen(!empty($this->gallery), function () {
