@@ -173,6 +173,7 @@ class ProjectController extends Controller
                 'duration_' . $lang . ' As duration',
                 'status_' . $lang . ' As status',
                 'type_' . $lang . ' As type',
+                'price',
                 'description_' . $lang . ' As desc',
                 'gallery'
             )->get();
