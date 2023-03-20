@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description_en">@lang('services.edit.input_labels.2')</label>
-                                        <textarea required rows="5" class="form-control" id="description_en" name="description_en">
+                                        <textarea maxlength="250" required rows="5" class="form-control" id="description_en" name="description_en">
                                         {{ $service->description_en }}
                                         </textarea>
                                     </div>
@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description_ar">@lang('services.edit.input_labels.4')</label>
-                                        <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
+                                        <textarea maxlength="250" required rows="5" class="form-control" id="description_ar" name="description_ar">
                                         {{ $service->description_ar }}
                                         </textarea>
                                     </div>
