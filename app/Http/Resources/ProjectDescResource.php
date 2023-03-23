@@ -18,7 +18,7 @@ class ProjectDescResource extends JsonResource
         return [
             'id' => $this->id,
             'image' => $this->image,
-            'title' => $this->title,
+            'title' => Str::limit($this->title, 100),
             'date' => $this->date,
             'owner' => $this->owner,
             'duration' => $this->duration,
