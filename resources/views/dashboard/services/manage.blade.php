@@ -48,7 +48,6 @@
                                     <th> @lang('services.table_heading.1') </th>
                                     <th> @lang('services.table_heading.2') </th>
                                     <th> @lang('services.table_heading.3') </th>
-                                    <th> @lang('services.table_heading.4') </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,9 +55,6 @@
                                     <tr>
                                         <td> {{ $data->id }} </td>
                                         <td> {{ $data->title }}</td>
-                                        <td>
-                                            <i class="{{ $data->icon }}"></i>
-                                        </td>
                                         <td> {{ Str::substr($data->desc, 0, 50) }}</td>
                                         <td>
                                             <a href="{{ route('services.edit', ['service' => $data->id]) }}"

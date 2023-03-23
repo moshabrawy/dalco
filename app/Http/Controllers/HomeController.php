@@ -19,8 +19,8 @@ class HomeController extends Controller
         $blogs = Blog::count();
         $testimonials = Testimonial::count();
         $certificates = Certificate::count();
-        $done_projects = Project::where('type_en', 'done')->count();
-        $pending_projects = Project::where('type_en', 'in process')->count();
+        $done_projects = Project::where('status_en', 'done')->count();
+        $pending_projects = Project::where('status_en', 'in process')->count();
         return view('dashboard.home', compact(
             'services',
             'blogs',

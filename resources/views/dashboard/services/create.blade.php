@@ -18,32 +18,25 @@
                         <form id="create" method="POST" action="{{ route('services.store') }}">
                             @csrf
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="icon">@lang('services.add.input_labels.0')</label>
-                                        <input type="text" class="form-control" id="icon" name="icon" />
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="title_en">@lang('services.add.input_labels.1')</label>
+                                        <label for="title_en">@lang('services.add.input_labels.0')</label>
                                         <input required type="text" class="form-control" id="title_en" name="title_en">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description_en">@lang('services.add.input_labels.2')</label>
-                                        <textarea maxlength="250" required rows="5" class="form-control" id="description_en" name="description_en">
+                                        <label for="description_en">@lang('services.add.input_labels.1')</label>
+                                        <textarea maxlength="156" required rows="5" class="form-control" id="description_en" name="description_en">
                                         </textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 arabic">
                                     <div class="form-group">
-                                        <label for="title_ar">@lang('services.add.input_labels.3')</label>
+                                        <label for="title_ar">@lang('services.add.input_labels.2')</label>
                                         <input required type="text" class="form-control" id="title_ar" name="title_ar">
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="description_ar">@lang('services.add.input_labels.4')</label>
-                                        <textarea maxlength="250" required rows="5" class="form-control" id="description_ar" name="description_ar">
+                                        <label for="description_ar">@lang('services.add.input_labels.3')</label>
+                                        <textarea maxlength="156" required rows="5" class="form-control" id="description_ar" name="description_ar">
                                         </textarea>
                                     </div>
                                 </div>

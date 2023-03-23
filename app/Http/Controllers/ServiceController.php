@@ -26,7 +26,6 @@ class ServiceController extends Controller
         $validation = Validator::make($request->all(), [
             "title_en" => "required",
             "title_ar" => "required",
-            "icon"   => "required",
         ]);
 
         if ($validation->fails()) {
@@ -38,7 +37,7 @@ class ServiceController extends Controller
                 'title_ar' => $request->title_ar,
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
-                'icon' => $request->icon,
+                'icon' => 'icon-service',
             ]);
         }
         notify()->success('You are awesome, your data was Created successfully.');
@@ -73,12 +72,11 @@ class ServiceController extends Controller
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
                 'description_en' => $request->description_en,
-                'description_ar' => $request->description_ar,
-                'icon' => $request->icon,
+                'description_ar' => $request->description_ar
             ]);
         }
         notify()->success('You are awesome, your data was Updated successfully.');
-        return redirect()->route('services.index',);
+        return redirect()->route('services.index');
     }
     public function destroy(Service $service)
     {
