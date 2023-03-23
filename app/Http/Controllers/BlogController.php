@@ -31,6 +31,8 @@ class BlogController extends Controller
             "title_en" => "required",
             "title_ar" => "required",
             "image"   => "required",
+            "description_en"   => "required",
+            "description_ar"   => "required",
         ]);
 
         if ($validation->fails()) {

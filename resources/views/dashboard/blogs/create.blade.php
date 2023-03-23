@@ -23,30 +23,29 @@
                                         <label for="title_en">@lang('news.add.input_labels.0')</label>
                                         <input required type="text" class="form-control" id="title_en" name="title_en">
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="description_en">@lang('news.add.input_labels.1')</label>
+                                        <textarea rows="5" class="form-control" id="description_en" name="description_en">
+                                        </textarea>
+                                    </div>
                                 </div>
                                 <div class="col-md-6 arabic">
                                     <div class="form-group">
                                         <label for="title_ar">@lang('news.add.input_labels.2')</label>
                                         <input required type="text" class="form-control" id="title_ar" name="title_ar">
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="description_ar">@lang('news.add.input_labels.3')</label>
+                                        <textarea rows="5" class="form-control" id="description_ar" name="description_ar">
+                                        </textarea>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="project_image">@lang('news.add.input_labels.4')</label>
                                         <input type="file" class="form-control" id="project_image" name="image" />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="description_en">@lang('news.add.input_labels.1')</label>
-                                        <textarea required rows="5" class="form-control" id="description_en" name="description_en">
-                                        </textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 arabic">
-                                    <div class="form-group">
-                                        <label for="description_ar">@lang('news.add.input_labels.3')</label>
-                                        <textarea required rows="5" class="form-control" id="description_ar" name="description_ar">
-                                        </textarea>
                                     </div>
                                 </div>
                             </div>
