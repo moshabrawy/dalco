@@ -1,18 +1,15 @@
 $(document).ready(function () {
     "use strict";
 
+    let desc_en = document.querySelector('#description_en');
+    let desc_ar = document.querySelector('#description_ar');
+
     if (window.location.pathname.includes('create')) {
-        document.querySelector('#description_ar').value = '';
-        document.querySelector('#description_en').value = '';
-
+        desc_en.value = '';
+        desc_ar.value = '';
     } else if (window.location.pathname.includes('edit')) {
-        // console.log(desc_ar);
-        // desc_ar.value = '';
-
-        // desc_ar = desc_ar.trimStart();
-
-        // desc_en = desc_en.trim();
-        // desc_ar = desc_ar.trim();
+        desc_en.value = desc_en.value.trim();
+        desc_ar.value = desc_ar.value.trim();
     }
 
 });
