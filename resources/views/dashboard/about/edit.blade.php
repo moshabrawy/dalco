@@ -43,8 +43,8 @@
                                             value="{{ $about->email }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="desc_en">@lang('about.edit.input_labels.4')</label>
-                                        <textarea rows="5" class="form-control" id="desc_en" name="desc_en">
+                                        <label for="description_en">@lang('about.edit.input_labels.4')</label>
+                                        <textarea rows="5" class="form-control" id="description_en" name="desc_en">
                                         {{ $about->desc_en }}
                                         </textarea>
                                     </div>
@@ -76,8 +76,8 @@
                                             value="{{ $about->phone }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="desc_ar">@lang('about.edit.input_labels.9')</label>
-                                        <textarea required rows="5" class="form-control" id="desc_ar" name="desc_ar">
+                                        <label for="description_ar">@lang('about.edit.input_labels.9')</label>
+                                        <textarea required rows="5" class="form-control" id="description_ar" name="desc_ar">
                                         {{ $about->desc_ar }}
                                         </textarea>
                                     </div>
