@@ -22,6 +22,7 @@ class AboutUSResource extends JsonResource
             'address' => $this->address,
             'email' => $this->email,
             'phone' => $this->phone,
+            'location' => $this->location,
             'projects_info' => [
                 ['value' => $this->projects_info[0]],
                 ['value' => $this->projects_info[1]],

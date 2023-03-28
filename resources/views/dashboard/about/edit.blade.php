@@ -72,8 +72,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">@lang('about.edit.input_labels.8')</label>
-                                        <input required type="text" class="form-control" id="phone" name="phone"
-                                            value="{{ $about->phone }}">
+                                        <input style="direction:ltr" required type="text" class="form-control" id="phone"
+                                            name="phone" value="{{ $about->phone }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="description_ar">@lang('about.edit.input_labels.9')</label>
@@ -125,6 +125,12 @@
                                                     value="{{ $about->projects_info[2] }}">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="location">@lang('about.edit.input_labels.17')</label>
+                                        <textarea required rows="5" class="form-control" id="location" name="location" style="max-height: 100px">
+                                        {{ $about->location }}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('address_ar');
             $table->string('email');
             $table->string('phone');
+            $table->text('location');
             $table->json('projects_info');
             $table->json('social');
             $table->timestamps();
