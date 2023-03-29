@@ -22,7 +22,10 @@ class AboutController extends Controller
         $projects_info = [$request->projects, $request->designs, $request->awards];
 
         if ($request->file('image')) {
-            $about->update(['image' => $this->UploudImage($request->image, 'about')]);
+            $about->image = $this->UploudImage($request->image, 'about');
+        }
+        if ($request->file('our_pdf')) {
+            $about->our_pdf = $this->UploudPdf($request->our_pdf, 'about');
         }
         $about->title_en      = !empty($request->title_en)   ? $request->title_en : $about->title_en;;
         $about->title_ar      = !empty($request->title_ar)   ? $request->title_ar : $about->title_ar;
@@ -54,5 +57,10 @@ class AboutController extends Controller
             ->get();
         $data = AboutUSResource::collection($about);
         return response()->json(['status_code' => 200, 'data' => $data[0]]);
+    }
+    public function get_our_pdf()
+    {
+        $our_pdf = About::select('our_pdf')->first();
+        return response()->json(['status_code' => 200, 'pdf' => $our_pdf['our_pdf']]);
     }
 }

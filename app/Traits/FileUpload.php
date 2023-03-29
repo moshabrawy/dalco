@@ -19,6 +19,17 @@ trait FileUpload
         return $imageName;
     }
 
+    function UploudPdf($pdf, $path)
+    {
+        $pdfName = $pdf->getClientOriginalName();
+        $file_path = public_path() . '/assets/pdf/' . $pdfName;
+        if (file_exists($file_path)) {
+            File::delete($file_path);
+        }
+        $pdf->move(public_path('assets/pdf/' . $path), $pdfName);
+        return $pdfName;
+    }
+
     /**
      * UploudImages Function
      * Upload Image has many types

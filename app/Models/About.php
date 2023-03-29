@@ -31,4 +31,9 @@ class About extends Model
     {
         return asset('assets/images/about/' . $image);
     }
+
+    public function getOurPdfAttribute($pdf)
+    {
+        return asset('assets/pdf/about/' . $pdf);
+    }
 }

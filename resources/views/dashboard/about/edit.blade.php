@@ -127,7 +127,18 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="location">@lang('about.edit.input_labels.17')</label>
+                                        <label for="our_pdf">@lang('about.edit.input_labels.17')</label>
+                                        <div style="display: flex">
+                                            <a href="{{ $about->our_pdf }}" target="_blank" class="our_pdf">
+                                                <i class="mdi mdi-file"></i>
+                                            </a>
+                                            <input type="file" accept="application/pdf" class="form-control"
+                                                id="our_pdf" name="our_pdf">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="location">@lang('about.edit.input_labels.18')</label>
                                         <textarea required rows="5" class="form-control" id="location" name="location" style="max-height: 100px">
                                         {{ $about->location }}
                                         </textarea>
