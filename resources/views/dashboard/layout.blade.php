@@ -198,22 +198,6 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#testimonials" aria-expanded="false"
-                            aria-controls="testimonials">
-                            <span class="menu-title">@lang('dashboard.sidebar.5')</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-bookmark menu-icon"></i>
-                        </a>
-                        <div class="collapse" id="testimonials">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('testimonials.create') }}">@lang('dashboard.sub_menu.0')</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('testimonials.index') }}">@lang('dashboard.sub_menu.1')</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#clients" aria-expanded="false"
                             aria-controls="clients">
                             <span class="menu-title">@lang('dashboard.sidebar.6')</span>
