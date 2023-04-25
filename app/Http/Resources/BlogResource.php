@@ -20,7 +20,7 @@ class BlogResource extends JsonResource
             'id' => $this->id,
             'image' => $this->image,
             'title' => Str::limit($this->title, 40),
-            'desc' => Str::limit($this->desc, 150),
+            'desc' => strip_tags(Str::limit($this->desc, 130), '<br>'),
             'date' => Carbon::parse($this->created_at)->format('d.m.Y'),
         ];
     }
