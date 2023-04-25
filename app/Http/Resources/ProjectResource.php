@@ -18,9 +18,9 @@ class ProjectResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => Str::limit($this->title, 80),
+            'title' => Str::limit($this->title, 40),
             'status' => $this->status,
-            'desc' => Str::limit($this->desc, 180),
+            'desc' => Str::limit($this->desc, 150),
             'image' => $this->image
         ];
     }

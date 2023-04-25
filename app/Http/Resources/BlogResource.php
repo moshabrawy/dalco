@@ -19,8 +19,8 @@ class BlogResource extends JsonResource
         return [
             'id' => $this->id,
             'image' => $this->image,
-            'title' => Str::limit($this->title, 80),
-            'desc' => Str::limit($this->desc, 180),
+            'title' => Str::limit($this->title, 40),
+            'desc' => Str::limit($this->desc, 150),
             'date' => Carbon::parse($this->created_at)->format('d.m.Y'),
         ];
     }
