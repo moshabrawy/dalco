@@ -35,8 +35,8 @@ class HomeController extends Controller
     {
         $lang = $request->lang ?? 'en';
         $data = About::pluck('social')->first();
-        $services_name = Service::pluck('title_' . $lang);
-        $projects_name = Project::pluck('title_' . $lang);
+        $services_name = Service::latest()->take(4)->pluck('title_' . $lang);
+        $projects_name = Project::latest()->take(4)->pluck('title_' . $lang);
         $about = About::select('image', 'phone', 'address_' . $lang . ' As address',)
             ->get();
         return response()->json(['status_code' => 200, 'services_name' => $services_name, 'projects_name' => $projects_name, 'about' => $about, 'social' => $data,]);
