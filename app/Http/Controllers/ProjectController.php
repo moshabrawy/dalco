@@ -109,6 +109,10 @@ class ProjectController extends Controller
                 $project->update(['image' => $this->UploudImage($request->image, 'projects')]);
             }
 
+            if ($request->file('image_gallery')) {
+                $project->update(['gallery' => $request->has('image_gallery') ? $this->UploudFiles($request->image_gallery, 'projects/gallery') : null]);
+            }
+
             $project->update([
                 'title_en' => $request->title_en,
                 'title_ar' => $request->title_ar,
@@ -124,7 +128,6 @@ class ProjectController extends Controller
                 'price' => $request->price,
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
-                'gallery' => $request->has('image_gallery') ? $this->UploudFiles($request->image_gallery, 'projects/gallery') : null,
             ]);
         }
         notify()->success('You are awesome, your data was Updated successfully.');

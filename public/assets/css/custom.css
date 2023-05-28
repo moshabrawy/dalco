@@ -189,7 +189,8 @@ select.form-control {
 .gallery {
     display: flex;
     justify-content: flex-start;
-    max-width: 50%;
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 .gallery a{
     margin: 10px;
