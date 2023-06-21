@@ -85,6 +85,23 @@ class ProjectController extends Controller
         return view('dashboard.projects.edit', compact('project'));
     }
 
+    function delete_gallery_image(Request $request)
+    {
+        $projectId = $request->project_id;
+        $index = $request->index;
+
+        $project = Project::find($projectId);
+
+        $gallery = $project->gallery;
+        // Remove the specified index from the gallery array
+        unset($gallery[$index]);
+        $project->gallery = array_values($gallery); // Re-index the array
+        $project->save();
+
+        notify()->success('You are awesome, Image dleted successfully.');
+        return redirect()->back();
+    }
+
     public function update(Project $project, Request $request)
     {
         $validation = Validator::make($request->all(), [
@@ -110,7 +127,10 @@ class ProjectController extends Controller
             }
 
             if ($request->file('image_gallery')) {
-                $project->update(['gallery' => $request->has('image_gallery') ? $this->UploudFiles($request->image_gallery, 'projects/gallery') : null]);
+                $gallery_items = $request->has('image_gallery') ? $this->UploudFiles($request->image_gallery, 'projects/gallery') : null;
+                $new_items = array_merge($gallery_items, $project->gallery);
+                $project->gallery = $new_items;
+                $project->save();
             }
 
             $project->update([

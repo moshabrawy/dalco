@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /* Web Routes */
+
 Route::view('cont', 'emails.contact_us');
 
 Route::group([
@@ -41,6 +42,7 @@ Route::group([
         Route::get('/', [HomeController::class, 'index'])->name('Dashboard');
         Route::resource('projects', ProjectController::class);
         Route::GET('porjects/search', [ProjectController::class, 'search'])->name('projectSearch');
+        Route::post('delete_gallery_image', [ProjectController::class, 'delete_gallery_image'])->name('delete.gallery.image');
 
         Route::view('admin/profile/', 'dashboard.profile.manage')->name('AdminProfile');
         Route::patch('admin/profile/{id}', [UserController::class, 'update'])->name('UpdateAdminProfile');

@@ -191,18 +191,70 @@ select.form-control {
     justify-content: flex-start;
     max-width: 100%;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
-.gallery a{
+
+.gallery .gallery-item {
+    position: relative;
+    display: inline-block;
     margin: 10px;
 }
 
-.purple-greaiante{background:linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1)) !important}
-.navbar .navbar-brand-wrapper .navbar-brand img{height: 35px;}
-.lang{
+.gallery .gallery-item .del-image-gallery {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    line-height: 0;
+}
+
+.gallery .gallery-item .del-image {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #a0122e;
+    opacity: 0.8;
+    transition: 0.3s ease-out;
+}
+
+.gallery .gallery-item .del-image:before,
+.gallery .gallery-item .del-image:after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: #FFF;
+    left: 50%;
+    top: 50%;
+}
+
+.gallery .gallery-item .del-image:after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.gallery .gallery-item .del-image:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.gallery .gallery-item .del-image:hover,
+.gallery .gallery-item .del-image:focus {
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+.purple-greaiante {
+    background: linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1)) !important
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand img {
+    height: 35px;
+}
+
+.lang {
     font-family: "Cairo", sans-serif
 }
 
-.our_pdf{
+.our_pdf {
     background-color: #F1F1F1;
     padding: 0;
     display: flex;
