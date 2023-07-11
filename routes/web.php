@@ -11,9 +11,9 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Illuminate\Support\Str;
 
 /* Web Routes */
-
 Route::view('cont', 'emails.contact_us');
 
 Route::group([

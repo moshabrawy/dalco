@@ -15,6 +15,10 @@ class ProjectDescResource extends JsonResource
      */
     public function toArray($request)
     {
+        $endIndex = strpos($this->desc, '<!--end short-->');
+        $short_desc = substr($this->desc, 0, $endIndex);
+        $startIndex = strpos($this->desc, '<!--end short-->') + strlen('<!--end short-->');
+        $long_desc = substr($this->desc, $startIndex);
         return [
             'id' => $this->id,
             'image' => $this->image,
@@ -25,9 +29,9 @@ class ProjectDescResource extends JsonResource
             'price' => $this->price,
             'status' => $this->status,
             'type' => $this->type,
-            'short_desc' => Str::limit($this->desc, 200),
+            'short_desc' => $short_desc,
             'image2' => !empty($this->gallery) ? asset('assets/images/projects/gallery/' . $this->gallery[0]) : $this->image,
-            'desc' => $this->desc,
+            'desc' => $long_desc,
             $this->mergeWhen(!empty($this->gallery), function () {
                 $project_gallery = [];
                 foreach ($this->gallery as $img) {
